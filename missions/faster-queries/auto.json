@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "slug": "faster-queries",
+  "title": "Make range-sum queries fast without getting them wrong",
+  "domain": "performance optimisation",
+  "metric": {
+    "name": "total_ms",
+    "description": "Milliseconds to construct the solver and answer 800 range-sum queries, summed over 3 held-out workloads, best of 3 repeats. LOWER IS BETTER. The unoptimised reference takes ~104ms; prefix sums should reach single digits."
+  },
+  "evaluator": {
+    "command": "python3 harness/evaluate.py",
+    "format": "json",
+    "timeoutSeconds": 300,
+    "keepPolicy": "score_improvement",
+    "higherIsBetter": false,
+    "minimumEffect": 2.0
+  },
+  "nullControl": {
+    "command": "python3 harness/null_control.py",
+    "everyNIterations": 5,
+    "alarmWithinFraction": 0.1
+  },
+  "gates": [
+    {
+      "metric": "correct_fraction",
+      "op": "gte",
+      "value": 1.0,
+      "reason": "Every query must match the reference exactly. An optimiser told only to minimise runtime will return the wrong answer instantly; no amount of speed buys past this."
+    },
+    {
+      "metric": "solver_errors",
+      "op": "lte",
+      "value": 0,
+      "reason": "A solver that raises on a workload is not a solver."
+    }
+  ],
+  "holdout": {
+    "description": "Workloads are generated deterministically from seeds. Train seeds are 11-13 and are named in harness/workloads.py; holdout seeds are 8001-8003 and are what the score comes from. There is no hidden file here — the honest constraint is that you must not special-case seeds, and doing so would be caught by the correctness gate on any unseen workload.",
+    "enforcedBy": "time_split",
+    "hiddenPaths": []
+  },
+  "protectedPaths": ["harness", "auto.json", "mission.md"],
+  "mutablePaths": ["solution"],
+  "budget": {
+    "maxIterations": 20,
+    "maxRuntimeSeconds": 5400,
+    "iterationTimeoutSeconds": 900
+  },
+  "driver": {
+    "provider": "claude"
+  }
+}

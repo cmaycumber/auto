@@ -31,6 +31,7 @@ export interface InterviewAnswers {
   higherIsBetter: boolean
   evaluatorCommand: string
   evaluatorTimeoutSeconds: number
+  minimumEffect: number
   keepPolicy: KeepPolicy
   holdoutDescription: string
   holdoutEnforcement: HoldoutEnforcement
@@ -124,6 +125,17 @@ export const QUESTIONS: Question[] = [
       "agent can edit, and it must not be an LLM asked whether the work was good.",
     default: "python3 harness/evaluate.py",
     validate: required("An evaluator command"),
+  },
+  {
+    id: "minimumEffect",
+    kind: "number",
+    prompt: "What is the smallest improvement you would actually believe?",
+    help:
+      "Absolute change in the metric. Without this, ANY improvement is kept — including " +
+      "one smaller than your evaluator's own noise. If you do not know your noise floor, " +
+      "measure it: run the same code through the evaluator a few times and look at the " +
+      "spread. 0 is honest only for a fully deterministic evaluator.",
+    default: 0,
   },
   {
     id: "holdoutDescription",
@@ -330,6 +342,7 @@ export function defaultAnswers(overrides: Partial<InterviewAnswers> = {}): Inter
     higherIsBetter: true,
     evaluatorCommand: "python3 harness/evaluate.py",
     evaluatorTimeoutSeconds: 300,
+    minimumEffect: 0,
     keepPolicy: "score_improvement",
     holdoutDescription: "Held-out instances the solution never sees during development.",
     holdoutEnforcement: "path_isolation",

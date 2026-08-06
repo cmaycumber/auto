@@ -188,6 +188,7 @@ function assemble(collected: Record<string, unknown>): InterviewAnswers {
     metricDescription: String(collected.metricDescription),
     higherIsBetter: Boolean(collected.higherIsBetter),
     evaluatorCommand: String(collected.evaluatorCommand),
+    minimumEffect: Number(collected.minimumEffect) || 0,
     holdoutDescription: String(collected.holdoutDescription),
     holdoutEnforcement: collected.holdoutEnforcement as InterviewAnswers["holdoutEnforcement"],
     hiddenPaths: (collected.hiddenPaths as string[]) ?? [],
@@ -224,6 +225,7 @@ function demoAnswers(): InterviewAnswers {
       "Mean fraction of the LP-relaxation bound achieved across 40 held-out knapsack " +
       "instances. Ranges 0–1; the naive baseline scores around 0.5.",
     higherIsBetter: true,
+    minimumEffect: 0.002,
     holdoutDescription:
       "40 instances in harness/holdout/, generated from a different seed than the 40 " +
       "training instances. The solution may read harness/train/ and never harness/holdout/.",

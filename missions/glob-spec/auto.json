@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "slug": "glob-spec",
+  "title": "Implement a path-glob matcher from its spec",
+  "domain": "spec conformance / parser implementation",
+  "metric": {
+    "name": "holdout_rate",
+    "description": "Fraction of 155 held-out (pattern, path, expected) cases matched correctly. Range 0-1. Always-False scores 0.465; the partial baseline scores 0.613; a correct implementation scores 1.0."
+  },
+  "evaluator": {
+    "command": "python3 harness/evaluate.py",
+    "format": "json",
+    "timeoutSeconds": 120,
+    "keepPolicy": "score_improvement",
+    "higherIsBetter": true,
+    "minimumEffect": 0.0129
+  },
+  "nullControl": {
+    "command": "python3 harness/null_control.py",
+    "everyNIterations": 5,
+    "alarmWithinFraction": 0.1
+  },
+  "gates": [
+    {
+      "metric": "matcher_errors",
+      "op": "lte",
+      "value": 0,
+      "reason": "A matcher that raises on any input is not a matcher. Return a bool for every case."
+    },
+    {
+      "metric": "generalisation_gap",
+      "op": "lte",
+      "value": 0.08,
+      "reason": "Visible rate minus holdout rate. Special-casing the visible tests raises one and not the other; this is SpecBench's delta, pre-registered before the run."
+    }
+  ],
+  "generalisationGapMetric": "generalisation_gap",
+  "holdout": {
+    "description": "310 balanced cases split in half. harness/visible_tests.json is readable and is what you develop against; harness/holdout_tests.json is hidden and is what you are scored on. The reference implementation that produced the labels is not in the repository at all.",
+    "enforcedBy": "path_isolation",
+    "hiddenPaths": ["harness/holdout_tests.json"]
+  },
+  "protectedPaths": ["harness", "auto.json", "mission.md"],
+  "mutablePaths": ["solution"],
+  "budget": {
+    "maxIterations": 25,
+    "maxRuntimeSeconds": 5400,
+    "iterationTimeoutSeconds": 900
+  },
+  "driver": {
+    "provider": "claude"
+  }
+}

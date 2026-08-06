@@ -34,6 +34,7 @@ export function buildContract(answers: InterviewAnswers): AutoMission {
       timeoutSeconds: answers.evaluatorTimeoutSeconds,
       keepPolicy: answers.keepPolicy,
       higherIsBetter: answers.higherIsBetter,
+      minimumEffect: answers.minimumEffect,
     },
     gates: answers.gates,
     holdout: {

@@ -1,0 +1,777 @@
+[
+ {
+  "pattern": "*/*.py",
+  "path": "a/b/c",
+  "expected": false
+ },
+ {
+  "pattern": "a?c/*.d",
+  "path": "pkg.tar.gz",
+  "expected": false
+ },
+ {
+  "pattern": "src/*",
+  "path": "app.json",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "deep/a/b/note.md",
+  "expected": true
+ },
+ {
+  "pattern": "[0-9]*",
+  "path": "9x",
+  "expected": true
+ },
+ {
+  "pattern": "src/*",
+  "path": "a.txt",
+  "expected": false
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "b.txt",
+  "expected": false
+ },
+ {
+  "pattern": "??.txt",
+  "path": "c.txt",
+  "expected": false
+ },
+ {
+  "pattern": "[a-z]*.md",
+  "path": "readme.md",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "data/1.csv",
+  "expected": true
+ },
+ {
+  "pattern": "?.txt",
+  "path": "README.md",
+  "expected": false
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "debug.log",
+  "expected": false
+ },
+ {
+  "pattern": "a/**/c",
+  "path": "axc/f.d",
+  "expected": false
+ },
+ {
+  "pattern": "src/**",
+  "path": "x/node_modules/a/b",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "deep/a/b/note.md",
+  "expected": false
+ },
+ {
+  "pattern": "*.[ch]",
+  "path": "src/test_main.py",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "file.c",
+  "expected": true
+ },
+ {
+  "pattern": "[0-9]*",
+  "path": "lib/zz9.rs",
+  "expected": false
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "file.h",
+  "expected": false
+ },
+ {
+  "pattern": "*.py",
+  "path": "axc/f.d",
+  "expected": false
+ },
+ {
+  "pattern": "src/*.py",
+  "path": "docs/n.md",
+  "expected": false
+ },
+ {
+  "pattern": "?.txt",
+  "path": "c.txt",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "src/deep/deep/x.py",
+  "expected": true
+ },
+ {
+  "pattern": "?.txt",
+  "path": "pkg.tar.gz",
+  "expected": false
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "cfg/app.json",
+  "expected": false
+ },
+ {
+  "pattern": "lib/[a-z][a-z]*.rs",
+  "path": "lib/ab.rs",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "src/",
+  "expected": false
+ },
+ {
+  "pattern": "a/*/c",
+  "path": "a/b/c",
+  "expected": true
+ },
+ {
+  "pattern": "a?c/*.d",
+  "path": "y.log",
+  "expected": false
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "deep/a/b/note.md",
+  "expected": false
+ },
+ {
+  "pattern": "**/test_*.py",
+  "path": "src/test_main.py",
+  "expected": true
+ },
+ {
+  "pattern": "[!x]*.log",
+  "path": "x1y",
+  "expected": false
+ },
+ {
+  "pattern": "*.py",
+  "path": "file.c",
+  "expected": false
+ },
+ {
+  "pattern": "src/*.py",
+  "path": "src/main.py",
+  "expected": true
+ },
+ {
+  "pattern": "src/**",
+  "path": "src/util/helpers.py",
+  "expected": true
+ },
+ {
+  "pattern": "src/**",
+  "path": "a/b",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "lib/zz9.rs",
+  "expected": true
+ },
+ {
+  "pattern": "[abc].txt",
+  "path": "notes.md",
+  "expected": false
+ },
+ {
+  "pattern": "*.[ch]",
+  "path": "README",
+  "expected": false
+ },
+ {
+  "pattern": "??.txt",
+  "path": "cc.txt",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "data/01.csv",
+  "expected": false
+ },
+ {
+  "pattern": "?ain.py",
+  "path": "xay",
+  "expected": false
+ },
+ {
+  "pattern": "[0-9]*",
+  "path": "a/b/d/c",
+  "expected": false
+ },
+ {
+  "pattern": "src/*.py",
+  "path": "y.log",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "src/deep/deep/x.py",
+  "expected": false
+ },
+ {
+  "pattern": "[!x]*.log",
+  "path": "y.log",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "file.c",
+  "expected": true
+ },
+ {
+  "pattern": "?.txt",
+  "path": "data/99.csv",
+  "expected": false
+ },
+ {
+  "pattern": "READ?E*",
+  "path": "readme.md",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "file.h",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "cc.txt",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "cfg/app.json",
+  "expected": true
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "ab.txt",
+  "expected": false
+ },
+ {
+  "pattern": "**/*.json",
+  "path": "cfg/app.json",
+  "expected": true
+ },
+ {
+  "pattern": "??.txt",
+  "path": "test_x.py",
+  "expected": false
+ },
+ {
+  "pattern": "a?c/*.d",
+  "path": "abc/d.d",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "util.py",
+  "expected": true
+ },
+ {
+  "pattern": "**/node_modules/**",
+  "path": "readme.md",
+  "expected": false
+ },
+ {
+  "pattern": "[abc].txt",
+  "path": "docs/n.md",
+  "expected": false
+ },
+ {
+  "pattern": "?.txt",
+  "path": "data/1.csv",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "lib/a.rs",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "pkg/mod.py",
+  "expected": true
+ },
+ {
+  "pattern": "data/[0-9][0-9].csv",
+  "path": "util.py",
+  "expected": false
+ },
+ {
+  "pattern": "*.py",
+  "path": "util.py",
+  "expected": true
+ },
+ {
+  "pattern": "**/*.md",
+  "path": "",
+  "expected": false
+ },
+ {
+  "pattern": "a/**/c",
+  "path": "lib/zz9.rs",
+  "expected": false
+ },
+ {
+  "pattern": "[!x]*.log",
+  "path": "x/node_modules/a/b",
+  "expected": false
+ },
+ {
+  "pattern": "lib/[a-z][a-z]*.rs",
+  "path": "lib/zz9.rs",
+  "expected": true
+ },
+ {
+  "pattern": "a/*/c",
+  "path": "axc/f.d",
+  "expected": false
+ },
+ {
+  "pattern": "x[!0-9]y",
+  "path": "y.log",
+  "expected": false
+ },
+ {
+  "pattern": "[a-z]*.md",
+  "path": "deep/a/b/note.md",
+  "expected": false
+ },
+ {
+  "pattern": "**/*.md",
+  "path": "a.txt",
+  "expected": false
+ },
+ {
+  "pattern": "src/**",
+  "path": "src/deep/deep/x.py",
+  "expected": true
+ },
+ {
+  "pattern": "?ain.py",
+  "path": "x1y",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "node_modules/x/y.js",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "abc/e.d",
+  "expected": true
+ },
+ {
+  "pattern": "src/*",
+  "path": "src/main.py",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "src/util/helpers.py",
+  "expected": true
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "x.log",
+  "expected": false
+ },
+ {
+  "pattern": "data/[0-9][0-9].csv",
+  "path": "1file",
+  "expected": false
+ },
+ {
+  "pattern": "[abc].txt",
+  "path": "",
+  "expected": false
+ },
+ {
+  "pattern": "**/*.md",
+  "path": "READZE9",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "node_modules/x/y.js",
+  "expected": true
+ },
+ {
+  "pattern": "?.txt",
+  "path": "a.txt",
+  "expected": true
+ },
+ {
+  "pattern": "**/*.json",
+  "path": "y.log",
+  "expected": false
+ },
+ {
+  "pattern": "**/test_*.py",
+  "path": "a/b/d/c",
+  "expected": false
+ },
+ {
+  "pattern": "**/*.md",
+  "path": "deep/a/b/note.md",
+  "expected": true
+ },
+ {
+  "pattern": "src/*",
+  "path": "src/deep/deep/x.py",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "test_x.py",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "y.log",
+  "expected": true
+ },
+ {
+  "pattern": "*.py",
+  "path": "README",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "q.txt",
+  "expected": true
+ },
+ {
+  "pattern": "src/*.py",
+  "path": "x.log",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "zz.txt",
+  "expected": true
+ },
+ {
+  "pattern": "??.txt",
+  "path": "debug.log",
+  "expected": false
+ },
+ {
+  "pattern": "a/**/c",
+  "path": "src/util/helpers.py",
+  "expected": false
+ },
+ {
+  "pattern": "[!x]*.log",
+  "path": "sub/test_y.py",
+  "expected": false
+ },
+ {
+  "pattern": "src/*",
+  "path": "a/b/d/c",
+  "expected": false
+ },
+ {
+  "pattern": "src/*",
+  "path": "c.txt",
+  "expected": false
+ },
+ {
+  "pattern": "src/**",
+  "path": "cfg/app.json",
+  "expected": false
+ },
+ {
+  "pattern": "?.txt",
+  "path": "q.txt",
+  "expected": true
+ },
+ {
+  "pattern": "src/*",
+  "path": "src/test_main.py",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "y.log",
+  "expected": true
+ },
+ {
+  "pattern": "[a-z]*.md",
+  "path": "zz.txt",
+  "expected": false
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "readme.md",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "x.log",
+  "expected": true
+ },
+ {
+  "pattern": "x[!0-9]y",
+  "path": "zz.txt",
+  "expected": false
+ },
+ {
+  "pattern": "**/*.json",
+  "path": "README",
+  "expected": false
+ },
+ {
+  "pattern": "a?c/*.d",
+  "path": "axc/f.d",
+  "expected": true
+ },
+ {
+  "pattern": "x[!0-9]y",
+  "path": "a.txt",
+  "expected": false
+ },
+ {
+  "pattern": "**/node_modules/**",
+  "path": "pkg.tar.gz",
+  "expected": false
+ },
+ {
+  "pattern": "data/[0-9][0-9].csv",
+  "path": "x.log",
+  "expected": false
+ },
+ {
+  "pattern": "*.tar.gz",
+  "path": "pkg.tar.gz",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "sub/test_y.py",
+  "expected": false
+ },
+ {
+  "pattern": "[a-z]*.md",
+  "path": "zebra.md",
+  "expected": true
+ },
+ {
+  "pattern": "a/**/c",
+  "path": "main.py",
+  "expected": false
+ },
+ {
+  "pattern": "READ?E*",
+  "path": "README",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "notes.md",
+  "expected": true
+ },
+ {
+  "pattern": "x[!0-9]y",
+  "path": "xay",
+  "expected": true
+ },
+ {
+  "pattern": "src/**",
+  "path": "a.txt",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "pkg.tar.gz",
+  "expected": true
+ },
+ {
+  "pattern": "[abc].txt",
+  "path": "b.txt",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "test_x.py",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "c.txt",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "src/main.py",
+  "expected": true
+ },
+ {
+  "pattern": "READ?E*",
+  "path": "READZE9",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "data/01.csv",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "lib/ab.rs",
+  "expected": true
+ },
+ {
+  "pattern": "*.tar.gz",
+  "path": "file.h",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "data/99.csv",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "src/a/b/c/d.py",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "README",
+  "expected": true
+ },
+ {
+  "pattern": "src/**/*.py",
+  "path": "src/main.py",
+  "expected": false
+ },
+ {
+  "pattern": "??.txt",
+  "path": "ab.txt",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "xay",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "src/deep/deep/x.py",
+  "expected": true
+ },
+ {
+  "pattern": "*.py",
+  "path": "README",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "x1y",
+  "expected": true
+ },
+ {
+  "pattern": "src/**",
+  "path": "src/test_main.py",
+  "expected": true
+ },
+ {
+  "pattern": "a?c/*.d",
+  "path": "x.txt",
+  "expected": false
+ },
+ {
+  "pattern": "*",
+  "path": "README",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "q.txt",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "zebra.md",
+  "expected": true
+ },
+ {
+  "pattern": "x[!0-9]y",
+  "path": "x.log",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "axc/f.d",
+  "expected": true
+ },
+ {
+  "pattern": "**",
+  "path": "a/b/d/c",
+  "expected": true
+ },
+ {
+  "pattern": "a?c/*.d",
+  "path": "abc/e.d",
+  "expected": true
+ },
+ {
+  "pattern": "*",
+  "path": "a.tar.gz",
+  "expected": true
+ },
+ {
+  "pattern": "READ?E*",
+  "path": "zz.txt",
+  "expected": false
+ },
+ {
+  "pattern": "a/**/c",
+  "path": "README",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "9x",
+  "expected": true
+ },
+ {
+  "pattern": "data/[0-9][0-9].csv",
+  "path": "a/c",
+  "expected": false
+ },
+ {
+  "pattern": "**",
+  "path": "readme.md",
+  "expected": true
+ },
+ {
+  "pattern": "*/*.py",
+  "path": "a/c",
+  "expected": false
+ },
+ {
+  "pattern": "??.txt",
+  "path": "axc/f.d",
+  "expected": false
+ }
+]

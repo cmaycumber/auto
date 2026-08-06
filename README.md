@@ -225,14 +225,26 @@ Working local loop, verified end-to-end against the real `claude` driver. Plugin
 and the cloud monitoring service are scoped with their seams defined but not built — see
 `docs/roadmap.md` for that and for an honest list of what this does not yet do.
 
-Two missions ship with the repo:
+## Examples
 
-- **`missions/knapsack`** — the starter mission `auto init --yes` generates. A placeholder
-  task, kept runnable so the loop works the moment you clone it.
-- **`missions/search-strategy`** — `auto` pointed at its own weakest component. The
-  solution is `auto`'s real parent-selection rule, ported to Python; the harness scores it
-  on held-out NK landscapes against a random-selection null control. Beating the baseline
-  here is a genuine finding about `auto`, not about a toy.
+Four worked missions ship with the repo, each covering a different shape. All run from a
+clean clone with no keys, no network, and nothing beyond Python 3. See
+[`missions/README.md`](missions/README.md).
+
+| Mission | Shape |
+|---|---|
+| `knapsack` | the starter scaffold `auto init --yes` generates |
+| `glob-spec` | spec conformance with visible vs held-out tests — a miniature SpecBench |
+| `faster-queries` | lower-is-better, with correctness as a gate that speed cannot outbid |
+| **`search-strategy`** | **`auto` pointed at its own parent-selection rule** |
+
+That last one is the fun one. Its solution is `auto`'s *real* selection algorithm ported to
+Python, scored on held-out NK landscapes with everything except selection held fixed. On
+its first run the loop found a genuine improvement — and `auto` was also caught keeping it
+on evidence that did not support the decision at the time, then reporting an effect size
+inflated 58% by selection on its own holdout. All three are written up in
+[`missions/search-strategy/FINDINGS.md`](missions/search-strategy/FINDINGS.md). The
+`minimumEffect` field exists because of it.
 
 ## What the research says, and what `auto` does about it
 

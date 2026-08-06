@@ -32,6 +32,14 @@ describe("buildContract", () => {
     expect(buildContract(answers).nullControl).toBeUndefined()
   })
 
+  test("carries the minimum effect into the generated contract", () => {
+    // A generated mission that omits this would immediately warn in `doctor`, which
+    // trains new users to ignore the warning that caught a real bug here.
+    expect(buildContract(defaultAnswers({ minimumEffect: 0.05 })).evaluator.minimumEffect).toBe(
+      0.05,
+    )
+  })
+
   test("derives the slug from the title", () => {
     expect(buildContract(defaultAnswers({ title: "Cut Pick-Path Length" })).slug).toBe(
       "cut-pick-path-length",

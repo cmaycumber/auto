@@ -12,7 +12,8 @@
     "format": "json",
     "timeoutSeconds": 300,
     "keepPolicy": "score_improvement",
-    "higherIsBetter": true
+    "higherIsBetter": true,
+    "minimumEffect": 0.002
   },
   "gates": [
     {
