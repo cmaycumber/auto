@@ -10,22 +10,22 @@ That rule has two costs. It keeps drawing from a champion whose neighbourhood is
 exhausted, and when it does explore it spreads those draws over the *whole* archive by
 recency, so most exploration lands on entries that were never plausible parents.
 
-This replaces it with a one-step acquisition function: for each entry, the expected
-improvement over the current best, multiplied by the probability that the draw is not a
-duplicate of something that entry has already produced.
+This replaces it with an acquisition function: for each entry, the expected improvement
+over the current best, multiplied by the number of *useful* draws that entry can still
+absorb before the budget runs out.
 
-    value(i) = P(new genome | i) x E[ max(0, score_i + delta - best) ]
+    value(i) = draws(i) x E[ max(0, score_i + delta - best) ]
 
 Both factors are grounded rather than tuned:
 
-  - **Novelty.** `nk.mutate` flips exactly one of N_LOCI bits, so a genome has exactly
+  - **Draws.** `nk.mutate` flips exactly one of N_LOCI bits, so a genome has exactly
     N_LOCI distinct possible children, and repeat draws re-evaluate genomes already in the
     archive. Those evaluations cannot improve anything. Rather than *predict* that waste,
     this measures it: `Landscape.fitness` is deterministic, so two draws that flipped the
     same bit come back with the identical float, and equal scores mean the same genome.
     Every observed parent-child pair is therefore an edge of the hypercube, recorded in
-    both directions against a *score*, and the untried fraction of a genome's
-    neighbourhood is exactly (N_LOCI - |edges seen|) / N_LOCI.
+    both directions against a *score*, and a genome's untried neighbour count is exactly
+    N_LOCI - |edges seen|.
 
     Keying that on the score rather than on the archive index is the point. A genome the
     champion threw off three times sits in the archive as three separate entries; counted
@@ -33,18 +33,45 @@ Both factors are grounded rather than tuned:
     next copy looking pristine and the search re-explores the same point. Pooling by score
     also merges what two different lineages learned about the same genome for free.
 
+    What that count is *worth* depends on how many evaluations are left, and that is the
+    one input the rule previously threw away — `BUDGET - len(archive)` gives it exactly.
+    Priced for a single draw, the factor is P(the flip lands somewhere unmapped) =
+    untried/N_LOCI, which is what a rule that assumes every draw is its last should use.
+    But with `r` draws left the entry can be worked more than once, and the quantity that
+    matters is how much of its neighbourhood those draws can actually reach:
+
+        novel(i)  = untried_i x (1 - (1 - 1/N_LOCI)^min(untried_i, r))
+
+    the expected number of *distinct* unmapped neighbours min(untried, r) uniform flips
+    turn up — coupon-collector, not a straight count, because the flips collide. That is
+    then capped by the fact that only the first success matters: `novel` draws each
+    beating the incumbent with probability `hit` are worth (1 - (1-hit)^novel)/hit single
+    draws, no more, so an entry cannot buy unbounded credit for a large neighbourhood it
+    is unlikely to convert.
+
+    At r = 1 this collapses back to untried/N_LOCI and the rule is the myopic one again,
+    which is correct — on the last evaluation nothing but the immediate draw exists. The
+    difference is everywhere before that. A one-step rule prices a half-worked champion
+    and a fresh runner-up by what each returns *this* draw, and so keeps re-drawing a
+    genome it has already flipped ten bits of; pricing the neighbourhood the remaining
+    budget can still cover moves the search off an exhausted incumbent earlier, which is
+    the same direction the exploration terms already added here have been rewarded for.
+
   - **Improvement.** The archive view carries no lineage, but this strategy *chose* every
     parent, so it can reconstruct the tree and observe every (child - parent) delta it has
     caused. Those deltas are fitted online, per landscape, to a normal — nothing here is
     fitted to the training seeds, so the model adapts to a landscape's own ruggedness
     instead of encoding a constant learned from the train split.
 
-The two together produce stagnation response and depth awareness as consequences rather
-than as separate hand-written rules: while the champion keeps improving, its neighbourhood
-is barely mapped and selection is greedy; once it stalls, each further draw fills that
-neighbourhood in until the best unmapped runner-up outranks it — and, because the
+The two together produce stagnation response, depth awareness and a horizon as consequences
+rather than as separate hand-written rules: while the champion keeps improving, its
+neighbourhood is barely mapped and selection is greedy; once it stalls, each further draw
+fills that neighbourhood in until an unmapped runner-up outranks it — and, because the
 neighbourhood is tracked per genome, the search then moves on to the next *distinct* point
-instead of restarting on another copy of one it has already worked over.
+instead of restarting on another copy of one it has already worked over. As the budget
+runs down, the credit an unworked neighbourhood earns for the draws it will never get
+shrinks with it, and the last few selections are made on immediate expected improvement
+alone.
 """
 
 import math
@@ -52,14 +79,17 @@ import random
 
 # Structural facts about the search this runs inside, not tuned knobs.
 _LOCI = 20  # nk.N_LOCI — one flipped bit per child, so this many distinct children
+_BUDGET = 80  # simulate.BUDGET — evaluations per landscape, the seed candidate included
 
 _MIN_DELTAS = 6  # observations needed before the improvement model says anything
 _DELTA_WINDOW = 48  # keep the model on the current regime, not the start of the climb
 _CANDIDATES = 12  # entries far below the champion cannot plausibly produce a new best
 _SIGMA_FLOOR = 1e-4  # a degenerate spread must not divide by zero
+_HIT_FLOOR = 1e-12  # below this the saturation correction is numerically the identity
 
 _ROOT_TWO = math.sqrt(2.0)
 _ROOT_TWO_PI = math.sqrt(2.0 * math.pi)
+_LOG_MISS = math.log1p(-1.0 / _LOCI)  # log P(one flip misses a given neighbour)
 
 # Per-landscape state. `run_one` always starts a fresh archive of length 1, which is the
 # reset signal; anything else unexpected about the archive's length also resets.
@@ -127,6 +157,28 @@ def _expected_improvement(margin: float, mu: float, sigma: float) -> float:
     return sigma * (pdf + z * cdf)
 
 
+def _useful_draws(untried: int, remaining: int, margin: float, mu: float, sigma: float) -> float:
+    """How many single draws' worth of value this entry's neighbourhood can still return.
+
+    Two effects, in order. The remaining budget can pay for at most min(untried, r) flips
+    here, and uniform flips collide, so those reach `untried x (1 - (1 - 1/L)^min(untried,
+    r))` distinct unmapped neighbours rather than that many. Then only the first neighbour
+    that beats the incumbent counts, so `novel` draws at hit rate `hit` are worth
+    `(1 - (1 - hit)^novel) / hit` of them and no more.
+
+    At remaining == 1 the first term is untried/L and the second is ~1, which is the
+    single-draw probability the myopic rule used.
+    """
+    draws = min(untried, remaining)
+    novel = untried * -math.expm1(draws * _LOG_MISS)
+
+    hit = 0.5 * math.erfc(-(mu - margin) / (sigma * _ROOT_TWO))  # P(one draw beats margin)
+    if hit <= _HIT_FLOOR:  # (1 - (1-hit)^novel)/hit -> novel as hit -> 0
+        return novel
+    hit = min(hit, 1.0 - _HIT_FLOOR)
+    return -math.expm1(novel * math.log1p(-hit)) / hit
+
+
 def _choose(archive: list[dict]) -> int:
     deltas = _state["deltas"]
     if len(deltas) < _MIN_DELTAS:
@@ -139,6 +191,9 @@ def _choose(archive: list[dict]) -> int:
 
     best_score = max(entry["score"] for entry in archive)
     neighbours = _state["neighbours"]
+    # Draws left including this one. Floored at 1, so a budget longer than the one this
+    # was written against degrades to the single-draw rule rather than to nonsense.
+    remaining = max(_BUDGET - len(archive), 1)
 
     # Collapse the archive to distinct genomes. Equal scores are the same point in the
     # space, so duplicate entries must compete for one candidate slot on one shared
@@ -154,8 +209,9 @@ def _choose(archive: list[dict]) -> int:
         untried = _LOCI - len(neighbours.get(score, ()))
         if untried <= 0:  # fully mapped: every draw from here is a re-evaluation
             continue
-        gain = _expected_improvement(best_score - score, mu, sigma)
-        value = gain * untried / _LOCI
+        margin = best_score - score
+        gain = _expected_improvement(margin, mu, sigma)
+        value = gain * _useful_draws(untried, remaining, margin, mu, sigma)
         if value > chosen_value:
             chosen, chosen_value = index, value
 

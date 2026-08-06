@@ -238,13 +238,21 @@ clean clone with no keys, no network, and nothing beyond Python 3. See
 | `faster-queries` | lower-is-better, with correctness as a gate that speed cannot outbid |
 | **`search-strategy`** | **`auto` pointed at its own parent-selection rule** |
 
-That last one is the fun one. Its solution is `auto`'s *real* selection algorithm ported to
-Python, scored on held-out NK landscapes with everything except selection held fixed. On
-its first run the loop found a genuine improvement — and `auto` was also caught keeping it
-on evidence that did not support the decision at the time, then reporting an effect size
-inflated 58% by selection on its own holdout. All three are written up in
-[`missions/search-strategy/FINDINGS.md`](missions/search-strategy/FINDINGS.md). The
-`minimumEffect` field exists because of it.
+That last one is the fun one, and it is the most useful thing in the repo. Its solution is
+`auto`'s *real* selection algorithm ported to Python, scored on held-out NK landscapes with
+everything except selection held fixed.
+
+On its first run the loop found a genuine improvement — expected-improvement acquisition
+with a novelty term, real at **p < 0.000001** on 400 fresh landscapes. It also reported that
+improvement as **twice its true size**, because half the gain was selection on its own
+holdout. And a per-step noise-floor bar, which looked like the obvious fix, would have
+**rejected all five keeps** of a result that is real: the loop's increments were each
+smaller than a 40-sample evaluator can resolve, and they compounded.
+
+Three true statements that point in different directions, which is why
+[`FINDINGS.md`](missions/search-strategy/FINDINGS.md) is worth reading in full. The short
+version: the fix for a loop outrunning its evaluator is a better evaluator, or a champion
+re-scored on a split nothing touched — not a threshold.
 
 ## What the research says, and what `auto` does about it
 

@@ -51,16 +51,20 @@ export interface EvaluatorContract {
    * The smallest score improvement worth keeping. A candidate must beat its parent by
    * more than this, not merely beat it.
    *
-   * Without it, `score_improvement` accepts *any* improvement — including one smaller
-   * than the evaluator's own noise. That is not hypothetical: the first keep in this
-   * repo's own `search-strategy` mission was +1.8%, and a paired bootstrap on the same
-   * 40 samples put the 95% CI at [-0.001, +0.026] with a sign test of 24W-15L, p=0.20.
-   * The loop called it a win; it was noise.
+   * **Use this only when the evaluator's noise is irreducible** — wall-clock timing, a
+   * physical measurement, a sampled benchmark you cannot cheaply enlarge. It is the right
+   * tool there and the wrong tool everywhere else.
    *
-   * Set this to the smallest effect you would actually believe. If you do not know,
-   * measure it: run two reasonable candidates against the evaluator and look at the
-   * spread. A mission whose evaluator reports a standard error can instead gate on that
-   * directly.
+   * It is NOT a general answer to multiplicity, and this repo has the receipt. In
+   * `missions/search-strategy`, the loop made five keeps of +0.006 to +0.013 each, none
+   * individually resolvable by a 40-sample evaluator whose CI half-width was 0.0137. They
+   * compounded into an effect that is real at p < 0.000001 on 400 fresh landscapes.
+   * Setting `minimumEffect` to that measured noise floor would have rejected every one of
+   * them and the run would have found nothing.
+   *
+   * When increments are smaller than your evaluator can resolve, the fix is a better
+   * evaluator (noise falls as 1/sqrt(n)) or a final champion re-scored on a never-touched
+   * split — not a bar that rejects real work along with the noise.
    */
   minimumEffect?: number
 }

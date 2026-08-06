@@ -1,81 +1,117 @@
 # Findings: pointing `auto` at its own parent selection
 
-First real run of this mission, 2026-08-06, `claude` driver.
+First full run, 2026-08-06, `claude` driver, 7 iterations before the runtime budget.
 
 ## What the loop did
 
-| step | change | holdout `mean_best` | verdict |
-|---|---|---|---|
-| 0 | baseline — `auto`'s real rule (champion, 25% recency-weighted exploration) | 0.689950 | — |
-| 1 | Gaussian expected-improvement acquisition over the archive | 0.702461 | keep (+1.8%) |
-| 2 | exact per-genome novelty term replacing a geometric one | 0.708138 | keep (+0.8%) |
+| step | from | change | holdout `mean_best` | verdict |
+|---|---|---|---|---|
+| 0 | — | baseline: `auto`'s real rule (champion, 25% recency-weighted exploration) | 0.689950 | — |
+| 1 | 0 | Gaussian expected-improvement acquisition over the archive | 0.702461 | keep |
+| 2 | 1 | exact per-genome novelty term replacing a geometric one | 0.708138 | keep |
+| 3 | 2 | conditional mean derived from the NK generator | 0.707149 | discard |
+| 4 | 2 | Beta-Binomial survival factor on the novelty term | 0.699140 | discard |
+| 5 | 1 | variance-matched Student-t tail in place of the Gaussian | 0.711980 | keep |
+| 6 | 2 | budget-aware count of reachable unmapped neighbours | 0.713798 | **champion** |
 
-Null control (uniformly random selection): **0.630497**.
+Null control (uniformly random selection): **0.630497**. The relative gap to the champion
+opened from **0.086 at baseline to 0.114 by step 5** — which is exactly what the baseline
+warning said to watch for, and the sign that the keeps were carrying real signal.
 
-## What the loop got wrong
+## Is the champion real?
 
-`auto` kept step 1 on a +1.8% improvement. A paired bootstrap over the same 40
-landscapes it was scored on:
-
-```
-paired mean difference  +0.012511
-bootstrap 95% CI        [-0.001286, +0.025975]    <- includes zero
-sign test               24W-15L, p = 0.1996
-```
-
-**That keep was not justified by the data `auto` had at the time it made the decision.**
-`score_improvement` accepts any improvement, so on an evaluator with sampling variance it
-accepts noise. This is the multiplicity gap named in `docs/roadmap.md`, hit on the first
-keep of the first run of the mission built to test it.
-
-Fix shipped: `evaluator.minimumEffect`, plus a `doctor` warning when a `score_improvement`
-mission does not set one.
-
-## What the loop got right
-
-The cumulative champion, re-scored on **400 fresh landscapes** (seeds 90000–90399 — a
-third split, never used for training or for the loop's holdout):
+Yes, and by a wide margin — but not by as much as the run reported.
 
 ```
-baseline           0.690095
-champion           0.701608
-paired difference  +0.011512
-bootstrap 95% CI   [+0.007387, +0.015595]
-sign test          228W-145L, p = 0.000020
+OPTIMISED-AGAINST holdout (n=40, the one the loop selected on)
+  baseline 0.689950   champion 0.713798
+  paired diff +0.023848   CI [+0.009977, +0.037323]   30W-9L  p = 0.001065
+
+FRESH holdout (n=400, never touched by any iteration)
+  baseline 0.690095   champion 0.702132
+  paired diff +0.012036   CI [+0.008191, +0.015906]   237W-139L  p < 0.000001
 ```
 
-**The improvement is real.** Expected-improvement acquisition with a novelty term genuinely
-beats champion-plus-ε on rugged NK landscapes. `auto` found something.
+Expected-improvement acquisition with a novelty term genuinely beats champion-plus-ε on
+rugged NK landscapes. `auto` found something.
 
-## The part worth internalising
+**But half the reported gain was selection.** +0.0238 on the holdout the loop optimised
+against, +0.0120 on fresh data. The run's headline was +3.5%; the truth is +1.7%.
 
-The effect shrank from **+0.0182** on the holdout the loop optimised against to **+0.0115**
-on fresh data — a **37% reduction**. Same strategy, same evaluator, same budget; the only
-difference is that one number was selected on and the other was not.
+That is the winner's curse, measured, and it is the argument for the thing `auto` still
+does not have: a second never-touched split scored only on the final champion. The loop's
+own holdout stops being a holdout the moment the loop starts selecting on it.
 
-That is the winner's curse, measured. It is also the strongest available argument for the
-thing `auto` still does not have: **a second, never-touched split scored only on the final
-champion.** The loop's own holdout stops being a holdout the moment the loop starts
-selecting on it, and it overstated this result by more than a third.
+## The uncomfortable part
 
-So all three of these are true at once, and collapsing them into one headline would be
-wrong in a different way each time:
+Earlier in this session, `auto` keeping step 1 on a +1.8% improvement looked like a clean
+failure — a paired test on the 40 landscapes it had put the CI at [-0.001, +0.026],
+p = 0.20. That motivated adding `evaluator.minimumEffect`, set from the measured noise
+floor of this evaluator (bootstrap CI half-width ≈ 0.0137, so ≈ 0.014).
 
-1. The improvement is real (p = 0.00002 on fresh data).
-2. `auto`'s decision to keep it was not statistically justified when it was made.
-3. The effect size `auto` reported was inflated by ~58% relative to the truth.
+Then the run finished, and:
 
-## Caveat that was written before the run
+| step | delta | under `minimumEffect = 0.014` |
+|---|---|---|
+| 1 | +0.012511 | discarded |
+| 2 | +0.005677 | discarded |
+| 5 | +0.009519 | discarded |
+| 6 | +0.005660 | discarded |
 
-From `mission.md`: a win here is evidence about *selection on rugged binary landscapes
-under a small budget*, not about `auto` on a real mission, where a child is an LLM-written
-code change rather than a bit flip. The next step is to port the strategy into
-`packages/core/src/archive.ts` and measure it there — not to assume it transfers.
+**Every keep would have been rejected. The loop would have found nothing** — and the thing
+it found is real at p < 0.000001.
+
+So the naive reading of the earlier result was wrong. `auto` was not simply "accepting
+noise". It was accepting a sequence of increments that were each individually smaller than
+its evaluator could resolve, and which compounded into a real effect.
+
+## What that actually implies
+
+A per-step minimum effect is the wrong instrument for incremental progress. Set it large
+enough to reject this evaluator's noise and it rejects real work; set it small enough to
+pass real work and it rejects nothing. There is no value that does both, because the
+problem is not the threshold — **the evaluator is underpowered for the size of step the
+loop takes.**
+
+Three fixes, in order of how well they work here:
+
+1. **Raise evaluator precision.** Noise scales as 1/√n. At 40 landscapes the CI half-width
+   is ≈0.0137 while the loop's increments are ≈0.006, so the evaluator cannot see its own
+   progress. Reaching a half-width of 0.003 needs roughly 800 landscapes. This mission is
+   genuinely underpowered and that is the honest fix.
+2. **Validate the champion on a never-touched split.** Catches the 50% inflation without
+   blocking anything. This is what was done by hand here and it is the highest-value
+   missing feature in `auto`.
+3. **`minimumEffect`** — right for an evaluator whose noise is irreducible (wall-clock
+   timing, as in `missions/faster-queries`), wrong as a general answer to multiplicity.
+
+`minimumEffect` is deliberately **not set** on this mission. Any value that would reject
+its noise would also reject its results, and pretending otherwise would be worse than
+leaving it off. `doctor` warns about that, and the warning is correct in general and wrong
+here — which is itself worth seeing.
+
+## Three statements, all true
+
+1. The improvement is real: p < 0.000001 on 400 fresh landscapes.
+2. `auto`'s per-step keeps were not individually justified by the data it had.
+3. The effect size it reported was inflated ~2× by selection on its own holdout.
+
+Collapsing these into one headline gets it wrong in a different way each time.
+
+## Caveat written before the run
+
+From `mission.md`: this is evidence about *selection on rugged binary landscapes under a
+small budget*, not about `auto` on a real mission, where a child is an LLM-written code
+change rather than a bit flip and the archive is tens of entries rather than 80. Porting
+the strategy into `packages/core/src/archive.ts` and measuring it there is the next step,
+not an assumption.
 
 ## Reproducing
 
 ```bash
 python3 analysis/paired_test.py . \
-  runs/<run-id>/snapshots/0/solution/strategy.py \
-  runs/<run-id>/snapshots/2/solution/strategy.py
+  analysis/baseline_step0.py \
+  analysis/champion_step6.py
 ```
+
+`analysis/` holds the baseline and the final champion because run snapshots are gitignored.

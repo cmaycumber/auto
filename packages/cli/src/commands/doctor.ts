@@ -128,11 +128,13 @@ export async function doctorCommand(options: DoctorOptions): Promise<number> {
     info(
       color.dim(
         wrap(
-          "This repo's own search-strategy mission hit exactly that: the loop kept a " +
-            "+1.8% candidate whose paired bootstrap CI was [-0.001, +0.026], sign test " +
-            "24W-15L, p=0.20. If you do not know your evaluator's noise floor, measure " +
-            "it — run two reasonable candidates and look at the spread — then set this " +
-            "to the smallest effect you would actually believe.",
+          "Set it only if this evaluator's noise is irreducible (wall-clock timing, a " +
+            "physical measurement). If your increments are simply smaller than the " +
+            "evaluator can resolve, a bar rejects real work along with the noise — in " +
+            "this repo's search-strategy mission a noise-floor bar would have discarded " +
+            "all five keeps of a result real at p<1e-6. The better fixes there are more " +
+            "samples (noise falls as 1/sqrt(n)) and re-scoring the final champion on a " +
+            "split no iteration touched.",
           76,
           "    ",
         ),
