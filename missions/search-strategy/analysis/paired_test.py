@@ -89,8 +89,8 @@ def main() -> int:
     ci_excludes_zero = lo > 0
     if ci_excludes_zero and p < 0.05:
         print("VERDICT: the improvement survives a paired test on THIS split.")
-    print("Re-run against a split no iteration touched before believing the effect SIZE —")
-    print("selection on the loop's own holdout inflated it ~2x in the run in FINDINGS.md.")
+        print("Re-run against a split no iteration touched before believing the effect SIZE —")
+        print("selection on the loop's own holdout inflated it ~2x in the run in FINDINGS.md.")
     elif ci_excludes_zero or p < 0.05:
         print("VERDICT: MARGINAL — one test clears, the other does not. Underpowered; more")
         print("landscapes would settle it. Do not treat as established.")
