@@ -61,6 +61,20 @@ export async function restore(
   mutablePaths: string[],
   snapshotDir: string,
 ): Promise<void> {
+  // If the snapshot directory is gone entirely there is nothing to restore FROM, and the
+  // per-path delete below would wipe the mutable tree and put nothing back. A restore with
+  // no source is a no-op, not a deletion.
+  //
+  // This is reachable: snapshots are per-run and gitignored, so an archive carried into a
+  // fresh clone references directories that do not exist. `resolveParent` prefers entries
+  // whose snapshots survive, but falls back to the champion when none do — and that
+  // champion's snapshot path is stale.
+  try {
+    await stat(snapshotDir)
+  } catch {
+    return
+  }
+
   for (const path of mutablePaths) {
     const target = join(missionDir, path)
     const source = join(snapshotDir, path)

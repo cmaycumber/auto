@@ -178,6 +178,7 @@ export function planMission(answers: InterviewAnswers): MissionPlan {
       path: ".gitignore",
       contents: [
         "runs/",
+        "archive/",
         "__pycache__/",
         "node_modules/",
         ".DS_Store",

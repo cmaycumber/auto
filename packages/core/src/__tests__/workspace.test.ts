@@ -58,6 +58,31 @@ describe("snapshot and restore", () => {
     expect(await readFile(join(dir, "solution", "lib", "util.py"), "utf-8")).toBe("util-v1")
   })
 
+  test("a missing snapshot directory is a no-op, not a wipe", async () => {
+    // Data-loss bug: restore() deleted each mutable path before checking it had anything
+    // to put back, so a stale snapshot reference destroyed the solution. Reachable from a
+    // fresh clone of a repo that committed its archive — snapshots are gitignored, so the
+    // parent's snapshot path resolves to nothing.
+    await restore(dir, ["solution"], join(snapshots, "does-not-exist"))
+
+    expect(existsSync(join(dir, "solution", "solve.py"))).toBe(true)
+    expect(await readFile(join(dir, "solution", "solve.py"), "utf-8")).toBe("v1")
+  })
+
+  test("still deletes a mutable path the snapshot legitimately lacks", async () => {
+    // The discriminator is whether the snapshot DIRECTORY exists, not whether each path
+    // is in it — a real snapshot that simply never contained `extra/` means the parent
+    // had no such directory, so it should go.
+    await snapshot(dir, ["solution"], join(snapshots, "0"))
+    await mkdir(join(dir, "extra"), { recursive: true })
+    await writeFile(join(dir, "extra", "new.py"), "added")
+
+    await restore(dir, ["solution", "extra"], join(snapshots, "0"))
+
+    expect(existsSync(join(dir, "extra"))).toBe(false)
+    expect(existsSync(join(dir, "solution", "solve.py"))).toBe(true)
+  })
+
   test("skips a declared path that does not exist", async () => {
     const captured = await snapshot(dir, ["solution", "missing"], join(snapshots, "0"))
     expect(captured).toEqual(["solution"])
