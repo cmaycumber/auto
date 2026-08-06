@@ -1,0 +1,3106 @@
+[
+  {
+    "id": "holdout-000",
+    "capacity": 136,
+    "items": [
+      {
+        "weight": 30,
+        "value": 56
+      },
+      {
+        "weight": 7,
+        "value": 46
+      },
+      {
+        "weight": 15,
+        "value": 5
+      },
+      {
+        "weight": 7,
+        "value": 58
+      },
+      {
+        "weight": 32,
+        "value": 54
+      },
+      {
+        "weight": 32,
+        "value": 45
+      },
+      {
+        "weight": 34,
+        "value": 53
+      },
+      {
+        "weight": 10,
+        "value": 39
+      },
+      {
+        "weight": 17,
+        "value": 28
+      },
+      {
+        "weight": 18,
+        "value": 29
+      },
+      {
+        "weight": 40,
+        "value": 8
+      },
+      {
+        "weight": 10,
+        "value": 12
+      },
+      {
+        "weight": 31,
+        "value": 40
+      },
+      {
+        "weight": 27,
+        "value": 14
+      },
+      {
+        "weight": 33,
+        "value": 40
+      }
+    ]
+  },
+  {
+    "id": "holdout-001",
+    "capacity": 123,
+    "items": [
+      {
+        "weight": 10,
+        "value": 48
+      },
+      {
+        "weight": 33,
+        "value": 58
+      },
+      {
+        "weight": 4,
+        "value": 46
+      },
+      {
+        "weight": 1,
+        "value": 50
+      },
+      {
+        "weight": 19,
+        "value": 37
+      },
+      {
+        "weight": 38,
+        "value": 52
+      },
+      {
+        "weight": 4,
+        "value": 31
+      },
+      {
+        "weight": 10,
+        "value": 4
+      },
+      {
+        "weight": 28,
+        "value": 54
+      },
+      {
+        "weight": 30,
+        "value": 22
+      },
+      {
+        "weight": 23,
+        "value": 28
+      },
+      {
+        "weight": 3,
+        "value": 14
+      },
+      {
+        "weight": 28,
+        "value": 45
+      },
+      {
+        "weight": 23,
+        "value": 32
+      },
+      {
+        "weight": 27,
+        "value": 1
+      },
+      {
+        "weight": 5,
+        "value": 34
+      },
+      {
+        "weight": 40,
+        "value": 20
+      },
+      {
+        "weight": 6,
+        "value": 38
+      },
+      {
+        "weight": 7,
+        "value": 21
+      },
+      {
+        "weight": 13,
+        "value": 11
+      },
+      {
+        "weight": 2,
+        "value": 35
+      },
+      {
+        "weight": 30,
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "holdout-002",
+    "capacity": 142,
+    "items": [
+      {
+        "weight": 35,
+        "value": 30
+      },
+      {
+        "weight": 2,
+        "value": 58
+      },
+      {
+        "weight": 25,
+        "value": 40
+      },
+      {
+        "weight": 9,
+        "value": 25
+      },
+      {
+        "weight": 32,
+        "value": 47
+      },
+      {
+        "weight": 30,
+        "value": 8
+      },
+      {
+        "weight": 40,
+        "value": 6
+      },
+      {
+        "weight": 31,
+        "value": 27
+      },
+      {
+        "weight": 31,
+        "value": 49
+      },
+      {
+        "weight": 23,
+        "value": 47
+      },
+      {
+        "weight": 36,
+        "value": 18
+      },
+      {
+        "weight": 8,
+        "value": 11
+      },
+      {
+        "weight": 3,
+        "value": 59
+      }
+    ]
+  },
+  {
+    "id": "holdout-003",
+    "capacity": 136,
+    "items": [
+      {
+        "weight": 20,
+        "value": 60
+      },
+      {
+        "weight": 40,
+        "value": 4
+      },
+      {
+        "weight": 4,
+        "value": 25
+      },
+      {
+        "weight": 39,
+        "value": 13
+      },
+      {
+        "weight": 6,
+        "value": 17
+      },
+      {
+        "weight": 10,
+        "value": 11
+      },
+      {
+        "weight": 11,
+        "value": 14
+      },
+      {
+        "weight": 26,
+        "value": 53
+      },
+      {
+        "weight": 6,
+        "value": 33
+      },
+      {
+        "weight": 14,
+        "value": 37
+      },
+      {
+        "weight": 24,
+        "value": 43
+      },
+      {
+        "weight": 32,
+        "value": 41
+      },
+      {
+        "weight": 11,
+        "value": 18
+      },
+      {
+        "weight": 25,
+        "value": 28
+      },
+      {
+        "weight": 19,
+        "value": 37
+      },
+      {
+        "weight": 12,
+        "value": 12
+      },
+      {
+        "weight": 16,
+        "value": 46
+      },
+      {
+        "weight": 7,
+        "value": 13
+      }
+    ]
+  },
+  {
+    "id": "holdout-004",
+    "capacity": 78,
+    "items": [
+      {
+        "weight": 30,
+        "value": 8
+      },
+      {
+        "weight": 17,
+        "value": 12
+      },
+      {
+        "weight": 29,
+        "value": 54
+      },
+      {
+        "weight": 15,
+        "value": 8
+      },
+      {
+        "weight": 7,
+        "value": 17
+      },
+      {
+        "weight": 26,
+        "value": 20
+      },
+      {
+        "weight": 19,
+        "value": 57
+      },
+      {
+        "weight": 8,
+        "value": 7
+      },
+      {
+        "weight": 37,
+        "value": 13
+      },
+      {
+        "weight": 13,
+        "value": 1
+      },
+      {
+        "weight": 16,
+        "value": 8
+      },
+      {
+        "weight": 17,
+        "value": 43
+      }
+    ]
+  },
+  {
+    "id": "holdout-005",
+    "capacity": 194,
+    "items": [
+      {
+        "weight": 37,
+        "value": 17
+      },
+      {
+        "weight": 39,
+        "value": 9
+      },
+      {
+        "weight": 6,
+        "value": 23
+      },
+      {
+        "weight": 7,
+        "value": 10
+      },
+      {
+        "weight": 21,
+        "value": 53
+      },
+      {
+        "weight": 11,
+        "value": 28
+      },
+      {
+        "weight": 38,
+        "value": 15
+      },
+      {
+        "weight": 22,
+        "value": 10
+      },
+      {
+        "weight": 9,
+        "value": 34
+      },
+      {
+        "weight": 3,
+        "value": 9
+      },
+      {
+        "weight": 10,
+        "value": 41
+      },
+      {
+        "weight": 23,
+        "value": 38
+      },
+      {
+        "weight": 23,
+        "value": 14
+      },
+      {
+        "weight": 11,
+        "value": 21
+      },
+      {
+        "weight": 3,
+        "value": 49
+      },
+      {
+        "weight": 19,
+        "value": 17
+      },
+      {
+        "weight": 18,
+        "value": 21
+      },
+      {
+        "weight": 40,
+        "value": 11
+      },
+      {
+        "weight": 15,
+        "value": 59
+      },
+      {
+        "weight": 35,
+        "value": 17
+      },
+      {
+        "weight": 24,
+        "value": 33
+      }
+    ]
+  },
+  {
+    "id": "holdout-006",
+    "capacity": 206,
+    "items": [
+      {
+        "weight": 19,
+        "value": 52
+      },
+      {
+        "weight": 20,
+        "value": 27
+      },
+      {
+        "weight": 16,
+        "value": 19
+      },
+      {
+        "weight": 28,
+        "value": 36
+      },
+      {
+        "weight": 22,
+        "value": 45
+      },
+      {
+        "weight": 38,
+        "value": 42
+      },
+      {
+        "weight": 40,
+        "value": 51
+      },
+      {
+        "weight": 20,
+        "value": 26
+      },
+      {
+        "weight": 12,
+        "value": 19
+      },
+      {
+        "weight": 21,
+        "value": 42
+      },
+      {
+        "weight": 31,
+        "value": 38
+      },
+      {
+        "weight": 15,
+        "value": 40
+      },
+      {
+        "weight": 27,
+        "value": 22
+      },
+      {
+        "weight": 12,
+        "value": 31
+      },
+      {
+        "weight": 5,
+        "value": 13
+      },
+      {
+        "weight": 31,
+        "value": 17
+      },
+      {
+        "weight": 26,
+        "value": 19
+      },
+      {
+        "weight": 16,
+        "value": 17
+      },
+      {
+        "weight": 1,
+        "value": 32
+      },
+      {
+        "weight": 32,
+        "value": 42
+      },
+      {
+        "weight": 38,
+        "value": 36
+      },
+      {
+        "weight": 22,
+        "value": 49
+      }
+    ]
+  },
+  {
+    "id": "holdout-007",
+    "capacity": 122,
+    "items": [
+      {
+        "weight": 20,
+        "value": 54
+      },
+      {
+        "weight": 26,
+        "value": 18
+      },
+      {
+        "weight": 3,
+        "value": 20
+      },
+      {
+        "weight": 16,
+        "value": 36
+      },
+      {
+        "weight": 13,
+        "value": 6
+      },
+      {
+        "weight": 17,
+        "value": 19
+      },
+      {
+        "weight": 27,
+        "value": 55
+      },
+      {
+        "weight": 35,
+        "value": 4
+      },
+      {
+        "weight": 30,
+        "value": 43
+      },
+      {
+        "weight": 10,
+        "value": 56
+      },
+      {
+        "weight": 1,
+        "value": 14
+      },
+      {
+        "weight": 38,
+        "value": 29
+      },
+      {
+        "weight": 35,
+        "value": 45
+      },
+      {
+        "weight": 2,
+        "value": 18
+      },
+      {
+        "weight": 27,
+        "value": 47
+      },
+      {
+        "weight": 30,
+        "value": 30
+      },
+      {
+        "weight": 13,
+        "value": 60
+      },
+      {
+        "weight": 3,
+        "value": 31
+      },
+      {
+        "weight": 1,
+        "value": 11
+      }
+    ]
+  },
+  {
+    "id": "holdout-008",
+    "capacity": 173,
+    "items": [
+      {
+        "weight": 6,
+        "value": 51
+      },
+      {
+        "weight": 25,
+        "value": 29
+      },
+      {
+        "weight": 32,
+        "value": 42
+      },
+      {
+        "weight": 3,
+        "value": 31
+      },
+      {
+        "weight": 26,
+        "value": 8
+      },
+      {
+        "weight": 39,
+        "value": 3
+      },
+      {
+        "weight": 34,
+        "value": 7
+      },
+      {
+        "weight": 39,
+        "value": 58
+      },
+      {
+        "weight": 16,
+        "value": 36
+      },
+      {
+        "weight": 31,
+        "value": 37
+      },
+      {
+        "weight": 33,
+        "value": 37
+      },
+      {
+        "weight": 36,
+        "value": 6
+      },
+      {
+        "weight": 35,
+        "value": 3
+      },
+      {
+        "weight": 3,
+        "value": 58
+      },
+      {
+        "weight": 37,
+        "value": 9
+      },
+      {
+        "weight": 4,
+        "value": 43
+      }
+    ]
+  },
+  {
+    "id": "holdout-009",
+    "capacity": 154,
+    "items": [
+      {
+        "weight": 40,
+        "value": 34
+      },
+      {
+        "weight": 34,
+        "value": 29
+      },
+      {
+        "weight": 31,
+        "value": 3
+      },
+      {
+        "weight": 4,
+        "value": 45
+      },
+      {
+        "weight": 31,
+        "value": 29
+      },
+      {
+        "weight": 13,
+        "value": 28
+      },
+      {
+        "weight": 25,
+        "value": 57
+      },
+      {
+        "weight": 6,
+        "value": 59
+      },
+      {
+        "weight": 9,
+        "value": 36
+      },
+      {
+        "weight": 28,
+        "value": 22
+      },
+      {
+        "weight": 1,
+        "value": 30
+      },
+      {
+        "weight": 8,
+        "value": 6
+      },
+      {
+        "weight": 11,
+        "value": 41
+      },
+      {
+        "weight": 11,
+        "value": 56
+      },
+      {
+        "weight": 17,
+        "value": 55
+      },
+      {
+        "weight": 14,
+        "value": 38
+      },
+      {
+        "weight": 18,
+        "value": 35
+      },
+      {
+        "weight": 16,
+        "value": 38
+      },
+      {
+        "weight": 38,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "id": "holdout-010",
+    "capacity": 146,
+    "items": [
+      {
+        "weight": 3,
+        "value": 32
+      },
+      {
+        "weight": 34,
+        "value": 21
+      },
+      {
+        "weight": 22,
+        "value": 55
+      },
+      {
+        "weight": 34,
+        "value": 34
+      },
+      {
+        "weight": 10,
+        "value": 55
+      },
+      {
+        "weight": 7,
+        "value": 52
+      },
+      {
+        "weight": 32,
+        "value": 22
+      },
+      {
+        "weight": 31,
+        "value": 20
+      },
+      {
+        "weight": 1,
+        "value": 59
+      },
+      {
+        "weight": 29,
+        "value": 21
+      },
+      {
+        "weight": 22,
+        "value": 30
+      },
+      {
+        "weight": 2,
+        "value": 29
+      },
+      {
+        "weight": 16,
+        "value": 60
+      },
+      {
+        "weight": 10,
+        "value": 52
+      },
+      {
+        "weight": 7,
+        "value": 5
+      },
+      {
+        "weight": 40,
+        "value": 57
+      },
+      {
+        "weight": 18,
+        "value": 19
+      },
+      {
+        "weight": 8,
+        "value": 27
+      },
+      {
+        "weight": 28,
+        "value": 18
+      },
+      {
+        "weight": 11,
+        "value": 23
+      },
+      {
+        "weight": 20,
+        "value": 48
+      }
+    ]
+  },
+  {
+    "id": "holdout-011",
+    "capacity": 139,
+    "items": [
+      {
+        "weight": 23,
+        "value": 27
+      },
+      {
+        "weight": 24,
+        "value": 59
+      },
+      {
+        "weight": 6,
+        "value": 14
+      },
+      {
+        "weight": 9,
+        "value": 59
+      },
+      {
+        "weight": 14,
+        "value": 24
+      },
+      {
+        "weight": 27,
+        "value": 2
+      },
+      {
+        "weight": 40,
+        "value": 47
+      },
+      {
+        "weight": 27,
+        "value": 18
+      },
+      {
+        "weight": 40,
+        "value": 57
+      },
+      {
+        "weight": 11,
+        "value": 19
+      },
+      {
+        "weight": 4,
+        "value": 8
+      },
+      {
+        "weight": 26,
+        "value": 60
+      },
+      {
+        "weight": 30,
+        "value": 27
+      },
+      {
+        "weight": 32,
+        "value": 27
+      },
+      {
+        "weight": 10,
+        "value": 36
+      },
+      {
+        "weight": 25,
+        "value": 40
+      },
+      {
+        "weight": 22,
+        "value": 22
+      },
+      {
+        "weight": 24,
+        "value": 47
+      },
+      {
+        "weight": 18,
+        "value": 54
+      },
+      {
+        "weight": 9,
+        "value": 57
+      },
+      {
+        "weight": 8,
+        "value": 38
+      },
+      {
+        "weight": 23,
+        "value": 39
+      }
+    ]
+  },
+  {
+    "id": "holdout-012",
+    "capacity": 231,
+    "items": [
+      {
+        "weight": 30,
+        "value": 10
+      },
+      {
+        "weight": 3,
+        "value": 19
+      },
+      {
+        "weight": 30,
+        "value": 44
+      },
+      {
+        "weight": 40,
+        "value": 52
+      },
+      {
+        "weight": 24,
+        "value": 3
+      },
+      {
+        "weight": 16,
+        "value": 4
+      },
+      {
+        "weight": 9,
+        "value": 24
+      },
+      {
+        "weight": 35,
+        "value": 32
+      },
+      {
+        "weight": 7,
+        "value": 21
+      },
+      {
+        "weight": 40,
+        "value": 59
+      },
+      {
+        "weight": 36,
+        "value": 32
+      },
+      {
+        "weight": 10,
+        "value": 57
+      },
+      {
+        "weight": 17,
+        "value": 29
+      },
+      {
+        "weight": 5,
+        "value": 55
+      },
+      {
+        "weight": 15,
+        "value": 46
+      },
+      {
+        "weight": 34,
+        "value": 55
+      },
+      {
+        "weight": 10,
+        "value": 6
+      },
+      {
+        "weight": 26,
+        "value": 15
+      },
+      {
+        "weight": 26,
+        "value": 13
+      },
+      {
+        "weight": 25,
+        "value": 49
+      },
+      {
+        "weight": 18,
+        "value": 40
+      },
+      {
+        "weight": 18,
+        "value": 4
+      },
+      {
+        "weight": 26,
+        "value": 28
+      },
+      {
+        "weight": 28,
+        "value": 57
+      }
+    ]
+  },
+  {
+    "id": "holdout-013",
+    "capacity": 149,
+    "items": [
+      {
+        "weight": 37,
+        "value": 28
+      },
+      {
+        "weight": 12,
+        "value": 13
+      },
+      {
+        "weight": 17,
+        "value": 1
+      },
+      {
+        "weight": 38,
+        "value": 25
+      },
+      {
+        "weight": 2,
+        "value": 14
+      },
+      {
+        "weight": 28,
+        "value": 38
+      },
+      {
+        "weight": 36,
+        "value": 18
+      },
+      {
+        "weight": 16,
+        "value": 14
+      },
+      {
+        "weight": 40,
+        "value": 36
+      },
+      {
+        "weight": 27,
+        "value": 7
+      },
+      {
+        "weight": 6,
+        "value": 50
+      },
+      {
+        "weight": 33,
+        "value": 60
+      },
+      {
+        "weight": 17,
+        "value": 43
+      },
+      {
+        "weight": 38,
+        "value": 53
+      },
+      {
+        "weight": 19,
+        "value": 54
+      },
+      {
+        "weight": 34,
+        "value": 32
+      }
+    ]
+  },
+  {
+    "id": "holdout-014",
+    "capacity": 136,
+    "items": [
+      {
+        "weight": 26,
+        "value": 14
+      },
+      {
+        "weight": 7,
+        "value": 14
+      },
+      {
+        "weight": 22,
+        "value": 11
+      },
+      {
+        "weight": 23,
+        "value": 47
+      },
+      {
+        "weight": 5,
+        "value": 42
+      },
+      {
+        "weight": 24,
+        "value": 59
+      },
+      {
+        "weight": 23,
+        "value": 46
+      },
+      {
+        "weight": 31,
+        "value": 16
+      },
+      {
+        "weight": 16,
+        "value": 27
+      },
+      {
+        "weight": 38,
+        "value": 41
+      },
+      {
+        "weight": 39,
+        "value": 25
+      },
+      {
+        "weight": 19,
+        "value": 24
+      },
+      {
+        "weight": 38,
+        "value": 58
+      },
+      {
+        "weight": 14,
+        "value": 34
+      },
+      {
+        "weight": 5,
+        "value": 13
+      }
+    ]
+  },
+  {
+    "id": "holdout-015",
+    "capacity": 156,
+    "items": [
+      {
+        "weight": 40,
+        "value": 3
+      },
+      {
+        "weight": 23,
+        "value": 19
+      },
+      {
+        "weight": 18,
+        "value": 34
+      },
+      {
+        "weight": 23,
+        "value": 30
+      },
+      {
+        "weight": 35,
+        "value": 47
+      },
+      {
+        "weight": 15,
+        "value": 54
+      },
+      {
+        "weight": 6,
+        "value": 33
+      },
+      {
+        "weight": 14,
+        "value": 58
+      },
+      {
+        "weight": 23,
+        "value": 51
+      },
+      {
+        "weight": 8,
+        "value": 36
+      },
+      {
+        "weight": 18,
+        "value": 53
+      },
+      {
+        "weight": 19,
+        "value": 31
+      },
+      {
+        "weight": 32,
+        "value": 17
+      },
+      {
+        "weight": 40,
+        "value": 12
+      },
+      {
+        "weight": 6,
+        "value": 53
+      },
+      {
+        "weight": 35,
+        "value": 56
+      }
+    ]
+  },
+  {
+    "id": "holdout-016",
+    "capacity": 177,
+    "items": [
+      {
+        "weight": 27,
+        "value": 53
+      },
+      {
+        "weight": 4,
+        "value": 50
+      },
+      {
+        "weight": 4,
+        "value": 5
+      },
+      {
+        "weight": 39,
+        "value": 18
+      },
+      {
+        "weight": 38,
+        "value": 3
+      },
+      {
+        "weight": 10,
+        "value": 11
+      },
+      {
+        "weight": 14,
+        "value": 36
+      },
+      {
+        "weight": 21,
+        "value": 39
+      },
+      {
+        "weight": 35,
+        "value": 55
+      },
+      {
+        "weight": 3,
+        "value": 7
+      },
+      {
+        "weight": 29,
+        "value": 42
+      },
+      {
+        "weight": 33,
+        "value": 19
+      },
+      {
+        "weight": 25,
+        "value": 57
+      },
+      {
+        "weight": 21,
+        "value": 54
+      },
+      {
+        "weight": 31,
+        "value": 14
+      },
+      {
+        "weight": 28,
+        "value": 50
+      }
+    ]
+  },
+  {
+    "id": "holdout-017",
+    "capacity": 158,
+    "items": [
+      {
+        "weight": 24,
+        "value": 33
+      },
+      {
+        "weight": 6,
+        "value": 59
+      },
+      {
+        "weight": 24,
+        "value": 38
+      },
+      {
+        "weight": 40,
+        "value": 42
+      },
+      {
+        "weight": 27,
+        "value": 36
+      },
+      {
+        "weight": 22,
+        "value": 20
+      },
+      {
+        "weight": 21,
+        "value": 30
+      },
+      {
+        "weight": 24,
+        "value": 58
+      },
+      {
+        "weight": 6,
+        "value": 52
+      },
+      {
+        "weight": 14,
+        "value": 52
+      },
+      {
+        "weight": 30,
+        "value": 42
+      },
+      {
+        "weight": 30,
+        "value": 10
+      },
+      {
+        "weight": 38,
+        "value": 37
+      },
+      {
+        "weight": 35,
+        "value": 60
+      }
+    ]
+  },
+  {
+    "id": "holdout-018",
+    "capacity": 235,
+    "items": [
+      {
+        "weight": 27,
+        "value": 1
+      },
+      {
+        "weight": 7,
+        "value": 22
+      },
+      {
+        "weight": 31,
+        "value": 42
+      },
+      {
+        "weight": 30,
+        "value": 39
+      },
+      {
+        "weight": 27,
+        "value": 19
+      },
+      {
+        "weight": 27,
+        "value": 46
+      },
+      {
+        "weight": 20,
+        "value": 54
+      },
+      {
+        "weight": 24,
+        "value": 24
+      },
+      {
+        "weight": 32,
+        "value": 53
+      },
+      {
+        "weight": 11,
+        "value": 44
+      },
+      {
+        "weight": 25,
+        "value": 29
+      },
+      {
+        "weight": 39,
+        "value": 47
+      },
+      {
+        "weight": 35,
+        "value": 45
+      },
+      {
+        "weight": 23,
+        "value": 58
+      },
+      {
+        "weight": 14,
+        "value": 60
+      },
+      {
+        "weight": 23,
+        "value": 2
+      },
+      {
+        "weight": 37,
+        "value": 44
+      },
+      {
+        "weight": 20,
+        "value": 36
+      },
+      {
+        "weight": 27,
+        "value": 32
+      },
+      {
+        "weight": 4,
+        "value": 48
+      },
+      {
+        "weight": 8,
+        "value": 56
+      }
+    ]
+  },
+  {
+    "id": "holdout-019",
+    "capacity": 76,
+    "items": [
+      {
+        "weight": 29,
+        "value": 50
+      },
+      {
+        "weight": 34,
+        "value": 41
+      },
+      {
+        "weight": 29,
+        "value": 38
+      },
+      {
+        "weight": 6,
+        "value": 20
+      },
+      {
+        "weight": 23,
+        "value": 19
+      },
+      {
+        "weight": 8,
+        "value": 14
+      },
+      {
+        "weight": 9,
+        "value": 23
+      },
+      {
+        "weight": 31,
+        "value": 39
+      },
+      {
+        "weight": 2,
+        "value": 53
+      },
+      {
+        "weight": 21,
+        "value": 24
+      },
+      {
+        "weight": 9,
+        "value": 55
+      },
+      {
+        "weight": 39,
+        "value": 25
+      }
+    ]
+  },
+  {
+    "id": "holdout-020",
+    "capacity": 80,
+    "items": [
+      {
+        "weight": 2,
+        "value": 27
+      },
+      {
+        "weight": 8,
+        "value": 28
+      },
+      {
+        "weight": 2,
+        "value": 4
+      },
+      {
+        "weight": 23,
+        "value": 23
+      },
+      {
+        "weight": 16,
+        "value": 25
+      },
+      {
+        "weight": 40,
+        "value": 18
+      },
+      {
+        "weight": 24,
+        "value": 35
+      },
+      {
+        "weight": 37,
+        "value": 14
+      },
+      {
+        "weight": 30,
+        "value": 8
+      },
+      {
+        "weight": 20,
+        "value": 25
+      },
+      {
+        "weight": 32,
+        "value": 48
+      },
+      {
+        "weight": 14,
+        "value": 51
+      },
+      {
+        "weight": 9,
+        "value": 20
+      }
+    ]
+  },
+  {
+    "id": "holdout-021",
+    "capacity": 191,
+    "items": [
+      {
+        "weight": 37,
+        "value": 47
+      },
+      {
+        "weight": 12,
+        "value": 19
+      },
+      {
+        "weight": 30,
+        "value": 36
+      },
+      {
+        "weight": 14,
+        "value": 30
+      },
+      {
+        "weight": 14,
+        "value": 20
+      },
+      {
+        "weight": 20,
+        "value": 28
+      },
+      {
+        "weight": 20,
+        "value": 40
+      },
+      {
+        "weight": 36,
+        "value": 5
+      },
+      {
+        "weight": 37,
+        "value": 12
+      },
+      {
+        "weight": 19,
+        "value": 32
+      },
+      {
+        "weight": 24,
+        "value": 51
+      },
+      {
+        "weight": 4,
+        "value": 8
+      },
+      {
+        "weight": 17,
+        "value": 59
+      },
+      {
+        "weight": 19,
+        "value": 57
+      },
+      {
+        "weight": 28,
+        "value": 32
+      },
+      {
+        "weight": 15,
+        "value": 46
+      },
+      {
+        "weight": 15,
+        "value": 51
+      },
+      {
+        "weight": 2,
+        "value": 14
+      },
+      {
+        "weight": 30,
+        "value": 54
+      },
+      {
+        "weight": 34,
+        "value": 2
+      },
+      {
+        "weight": 29,
+        "value": 16
+      },
+      {
+        "weight": 9,
+        "value": 6
+      },
+      {
+        "weight": 8,
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "holdout-022",
+    "capacity": 115,
+    "items": [
+      {
+        "weight": 21,
+        "value": 37
+      },
+      {
+        "weight": 11,
+        "value": 21
+      },
+      {
+        "weight": 11,
+        "value": 48
+      },
+      {
+        "weight": 22,
+        "value": 46
+      },
+      {
+        "weight": 19,
+        "value": 8
+      },
+      {
+        "weight": 35,
+        "value": 31
+      },
+      {
+        "weight": 22,
+        "value": 35
+      },
+      {
+        "weight": 22,
+        "value": 11
+      },
+      {
+        "weight": 13,
+        "value": 3
+      },
+      {
+        "weight": 1,
+        "value": 13
+      },
+      {
+        "weight": 22,
+        "value": 47
+      },
+      {
+        "weight": 36,
+        "value": 48
+      },
+      {
+        "weight": 35,
+        "value": 57
+      },
+      {
+        "weight": 20,
+        "value": 11
+      },
+      {
+        "weight": 37,
+        "value": 55
+      },
+      {
+        "weight": 14,
+        "value": 56
+      },
+      {
+        "weight": 5,
+        "value": 25
+      },
+      {
+        "weight": 31,
+        "value": 52
+      }
+    ]
+  },
+  {
+    "id": "holdout-023",
+    "capacity": 186,
+    "items": [
+      {
+        "weight": 37,
+        "value": 40
+      },
+      {
+        "weight": 36,
+        "value": 22
+      },
+      {
+        "weight": 2,
+        "value": 60
+      },
+      {
+        "weight": 4,
+        "value": 48
+      },
+      {
+        "weight": 25,
+        "value": 22
+      },
+      {
+        "weight": 28,
+        "value": 7
+      },
+      {
+        "weight": 19,
+        "value": 12
+      },
+      {
+        "weight": 17,
+        "value": 36
+      },
+      {
+        "weight": 32,
+        "value": 55
+      },
+      {
+        "weight": 10,
+        "value": 24
+      },
+      {
+        "weight": 40,
+        "value": 22
+      },
+      {
+        "weight": 10,
+        "value": 33
+      },
+      {
+        "weight": 39,
+        "value": 10
+      },
+      {
+        "weight": 8,
+        "value": 5
+      },
+      {
+        "weight": 16,
+        "value": 1
+      },
+      {
+        "weight": 38,
+        "value": 52
+      },
+      {
+        "weight": 4,
+        "value": 52
+      },
+      {
+        "weight": 2,
+        "value": 53
+      },
+      {
+        "weight": 2,
+        "value": 11
+      },
+      {
+        "weight": 18,
+        "value": 4
+      },
+      {
+        "weight": 29,
+        "value": 36
+      }
+    ]
+  },
+  {
+    "id": "holdout-024",
+    "capacity": 170,
+    "items": [
+      {
+        "weight": 30,
+        "value": 12
+      },
+      {
+        "weight": 31,
+        "value": 2
+      },
+      {
+        "weight": 25,
+        "value": 25
+      },
+      {
+        "weight": 25,
+        "value": 24
+      },
+      {
+        "weight": 15,
+        "value": 24
+      },
+      {
+        "weight": 31,
+        "value": 55
+      },
+      {
+        "weight": 30,
+        "value": 8
+      },
+      {
+        "weight": 20,
+        "value": 47
+      },
+      {
+        "weight": 29,
+        "value": 23
+      },
+      {
+        "weight": 28,
+        "value": 52
+      },
+      {
+        "weight": 16,
+        "value": 25
+      },
+      {
+        "weight": 16,
+        "value": 13
+      },
+      {
+        "weight": 25,
+        "value": 31
+      },
+      {
+        "weight": 39,
+        "value": 19
+      },
+      {
+        "weight": 31,
+        "value": 31
+      },
+      {
+        "weight": 9,
+        "value": 18
+      },
+      {
+        "weight": 15,
+        "value": 27
+      },
+      {
+        "weight": 22,
+        "value": 4
+      },
+      {
+        "weight": 27,
+        "value": 1
+      },
+      {
+        "weight": 17,
+        "value": 19
+      }
+    ]
+  },
+  {
+    "id": "holdout-025",
+    "capacity": 129,
+    "items": [
+      {
+        "weight": 28,
+        "value": 33
+      },
+      {
+        "weight": 34,
+        "value": 8
+      },
+      {
+        "weight": 10,
+        "value": 17
+      },
+      {
+        "weight": 14,
+        "value": 35
+      },
+      {
+        "weight": 29,
+        "value": 33
+      },
+      {
+        "weight": 38,
+        "value": 52
+      },
+      {
+        "weight": 2,
+        "value": 33
+      },
+      {
+        "weight": 23,
+        "value": 23
+      },
+      {
+        "weight": 16,
+        "value": 6
+      },
+      {
+        "weight": 10,
+        "value": 27
+      },
+      {
+        "weight": 34,
+        "value": 6
+      },
+      {
+        "weight": 39,
+        "value": 26
+      },
+      {
+        "weight": 32,
+        "value": 36
+      },
+      {
+        "weight": 17,
+        "value": 14
+      },
+      {
+        "weight": 5,
+        "value": 16
+      },
+      {
+        "weight": 27,
+        "value": 33
+      },
+      {
+        "weight": 25,
+        "value": 43
+      },
+      {
+        "weight": 4,
+        "value": 24
+      }
+    ]
+  },
+  {
+    "id": "holdout-026",
+    "capacity": 293,
+    "items": [
+      {
+        "weight": 33,
+        "value": 31
+      },
+      {
+        "weight": 30,
+        "value": 51
+      },
+      {
+        "weight": 39,
+        "value": 60
+      },
+      {
+        "weight": 33,
+        "value": 22
+      },
+      {
+        "weight": 26,
+        "value": 53
+      },
+      {
+        "weight": 30,
+        "value": 58
+      },
+      {
+        "weight": 9,
+        "value": 34
+      },
+      {
+        "weight": 11,
+        "value": 24
+      },
+      {
+        "weight": 29,
+        "value": 60
+      },
+      {
+        "weight": 32,
+        "value": 13
+      },
+      {
+        "weight": 20,
+        "value": 32
+      },
+      {
+        "weight": 33,
+        "value": 31
+      },
+      {
+        "weight": 28,
+        "value": 35
+      },
+      {
+        "weight": 1,
+        "value": 50
+      },
+      {
+        "weight": 34,
+        "value": 3
+      },
+      {
+        "weight": 21,
+        "value": 5
+      },
+      {
+        "weight": 25,
+        "value": 6
+      },
+      {
+        "weight": 17,
+        "value": 2
+      },
+      {
+        "weight": 35,
+        "value": 11
+      },
+      {
+        "weight": 34,
+        "value": 29
+      },
+      {
+        "weight": 27,
+        "value": 54
+      },
+      {
+        "weight": 2,
+        "value": 47
+      },
+      {
+        "weight": 6,
+        "value": 16
+      },
+      {
+        "weight": 34,
+        "value": 38
+      }
+    ]
+  },
+  {
+    "id": "holdout-027",
+    "capacity": 172,
+    "items": [
+      {
+        "weight": 14,
+        "value": 34
+      },
+      {
+        "weight": 13,
+        "value": 30
+      },
+      {
+        "weight": 7,
+        "value": 12
+      },
+      {
+        "weight": 10,
+        "value": 16
+      },
+      {
+        "weight": 21,
+        "value": 28
+      },
+      {
+        "weight": 17,
+        "value": 3
+      },
+      {
+        "weight": 29,
+        "value": 46
+      },
+      {
+        "weight": 13,
+        "value": 60
+      },
+      {
+        "weight": 39,
+        "value": 53
+      },
+      {
+        "weight": 18,
+        "value": 11
+      },
+      {
+        "weight": 11,
+        "value": 54
+      },
+      {
+        "weight": 39,
+        "value": 42
+      },
+      {
+        "weight": 14,
+        "value": 35
+      },
+      {
+        "weight": 20,
+        "value": 30
+      },
+      {
+        "weight": 33,
+        "value": 2
+      },
+      {
+        "weight": 37,
+        "value": 16
+      },
+      {
+        "weight": 6,
+        "value": 53
+      },
+      {
+        "weight": 31,
+        "value": 19
+      },
+      {
+        "weight": 39,
+        "value": 25
+      },
+      {
+        "weight": 12,
+        "value": 13
+      },
+      {
+        "weight": 24,
+        "value": 22
+      },
+      {
+        "weight": 11,
+        "value": 24
+      },
+      {
+        "weight": 1,
+        "value": 26
+      }
+    ]
+  },
+  {
+    "id": "holdout-028",
+    "capacity": 203,
+    "items": [
+      {
+        "weight": 27,
+        "value": 32
+      },
+      {
+        "weight": 15,
+        "value": 36
+      },
+      {
+        "weight": 1,
+        "value": 2
+      },
+      {
+        "weight": 13,
+        "value": 7
+      },
+      {
+        "weight": 11,
+        "value": 25
+      },
+      {
+        "weight": 34,
+        "value": 34
+      },
+      {
+        "weight": 36,
+        "value": 18
+      },
+      {
+        "weight": 27,
+        "value": 45
+      },
+      {
+        "weight": 19,
+        "value": 2
+      },
+      {
+        "weight": 22,
+        "value": 14
+      },
+      {
+        "weight": 23,
+        "value": 24
+      },
+      {
+        "weight": 23,
+        "value": 26
+      },
+      {
+        "weight": 28,
+        "value": 43
+      },
+      {
+        "weight": 40,
+        "value": 58
+      },
+      {
+        "weight": 8,
+        "value": 51
+      },
+      {
+        "weight": 29,
+        "value": 19
+      },
+      {
+        "weight": 5,
+        "value": 35
+      },
+      {
+        "weight": 14,
+        "value": 55
+      },
+      {
+        "weight": 25,
+        "value": 41
+      },
+      {
+        "weight": 15,
+        "value": 59
+      },
+      {
+        "weight": 19,
+        "value": 23
+      }
+    ]
+  },
+  {
+    "id": "holdout-029",
+    "capacity": 98,
+    "items": [
+      {
+        "weight": 22,
+        "value": 17
+      },
+      {
+        "weight": 30,
+        "value": 45
+      },
+      {
+        "weight": 2,
+        "value": 29
+      },
+      {
+        "weight": 2,
+        "value": 37
+      },
+      {
+        "weight": 20,
+        "value": 22
+      },
+      {
+        "weight": 24,
+        "value": 57
+      },
+      {
+        "weight": 2,
+        "value": 27
+      },
+      {
+        "weight": 4,
+        "value": 3
+      },
+      {
+        "weight": 37,
+        "value": 39
+      },
+      {
+        "weight": 16,
+        "value": 29
+      },
+      {
+        "weight": 13,
+        "value": 12
+      },
+      {
+        "weight": 1,
+        "value": 8
+      },
+      {
+        "weight": 23,
+        "value": 38
+      },
+      {
+        "weight": 40,
+        "value": 58
+      },
+      {
+        "weight": 13,
+        "value": 29
+      },
+      {
+        "weight": 17,
+        "value": 50
+      },
+      {
+        "weight": 6,
+        "value": 54
+      },
+      {
+        "weight": 11,
+        "value": 19
+      }
+    ]
+  },
+  {
+    "id": "holdout-030",
+    "capacity": 127,
+    "items": [
+      {
+        "weight": 13,
+        "value": 45
+      },
+      {
+        "weight": 4,
+        "value": 33
+      },
+      {
+        "weight": 15,
+        "value": 3
+      },
+      {
+        "weight": 40,
+        "value": 11
+      },
+      {
+        "weight": 27,
+        "value": 43
+      },
+      {
+        "weight": 19,
+        "value": 45
+      },
+      {
+        "weight": 4,
+        "value": 36
+      },
+      {
+        "weight": 32,
+        "value": 54
+      },
+      {
+        "weight": 27,
+        "value": 24
+      },
+      {
+        "weight": 19,
+        "value": 5
+      },
+      {
+        "weight": 37,
+        "value": 54
+      },
+      {
+        "weight": 10,
+        "value": 49
+      },
+      {
+        "weight": 25,
+        "value": 55
+      },
+      {
+        "weight": 40,
+        "value": 53
+      },
+      {
+        "weight": 32,
+        "value": 4
+      },
+      {
+        "weight": 5,
+        "value": 52
+      }
+    ]
+  },
+  {
+    "id": "holdout-031",
+    "capacity": 156,
+    "items": [
+      {
+        "weight": 28,
+        "value": 53
+      },
+      {
+        "weight": 25,
+        "value": 38
+      },
+      {
+        "weight": 32,
+        "value": 55
+      },
+      {
+        "weight": 33,
+        "value": 3
+      },
+      {
+        "weight": 3,
+        "value": 46
+      },
+      {
+        "weight": 35,
+        "value": 17
+      },
+      {
+        "weight": 20,
+        "value": 4
+      },
+      {
+        "weight": 32,
+        "value": 15
+      },
+      {
+        "weight": 27,
+        "value": 35
+      },
+      {
+        "weight": 14,
+        "value": 8
+      },
+      {
+        "weight": 5,
+        "value": 31
+      },
+      {
+        "weight": 1,
+        "value": 19
+      },
+      {
+        "weight": 21,
+        "value": 53
+      },
+      {
+        "weight": 38,
+        "value": 20
+      },
+      {
+        "weight": 15,
+        "value": 51
+      },
+      {
+        "weight": 35,
+        "value": 1
+      },
+      {
+        "weight": 40,
+        "value": 43
+      },
+      {
+        "weight": 15,
+        "value": 23
+      },
+      {
+        "weight": 11,
+        "value": 4
+      },
+      {
+        "weight": 33,
+        "value": 33
+      },
+      {
+        "weight": 20,
+        "value": 53
+      },
+      {
+        "weight": 30,
+        "value": 34
+      }
+    ]
+  },
+  {
+    "id": "holdout-032",
+    "capacity": 135,
+    "items": [
+      {
+        "weight": 10,
+        "value": 41
+      },
+      {
+        "weight": 37,
+        "value": 52
+      },
+      {
+        "weight": 6,
+        "value": 18
+      },
+      {
+        "weight": 35,
+        "value": 36
+      },
+      {
+        "weight": 7,
+        "value": 23
+      },
+      {
+        "weight": 23,
+        "value": 58
+      },
+      {
+        "weight": 33,
+        "value": 26
+      },
+      {
+        "weight": 39,
+        "value": 39
+      },
+      {
+        "weight": 33,
+        "value": 57
+      },
+      {
+        "weight": 13,
+        "value": 53
+      },
+      {
+        "weight": 33,
+        "value": 28
+      },
+      {
+        "weight": 38,
+        "value": 43
+      },
+      {
+        "weight": 4,
+        "value": 33
+      }
+    ]
+  },
+  {
+    "id": "holdout-033",
+    "capacity": 110,
+    "items": [
+      {
+        "weight": 18,
+        "value": 26
+      },
+      {
+        "weight": 35,
+        "value": 9
+      },
+      {
+        "weight": 17,
+        "value": 16
+      },
+      {
+        "weight": 11,
+        "value": 48
+      },
+      {
+        "weight": 6,
+        "value": 9
+      },
+      {
+        "weight": 35,
+        "value": 57
+      },
+      {
+        "weight": 27,
+        "value": 27
+      },
+      {
+        "weight": 6,
+        "value": 6
+      },
+      {
+        "weight": 11,
+        "value": 42
+      },
+      {
+        "weight": 21,
+        "value": 47
+      },
+      {
+        "weight": 36,
+        "value": 41
+      },
+      {
+        "weight": 14,
+        "value": 44
+      },
+      {
+        "weight": 9,
+        "value": 8
+      },
+      {
+        "weight": 24,
+        "value": 37
+      },
+      {
+        "weight": 33,
+        "value": 42
+      }
+    ]
+  },
+  {
+    "id": "holdout-034",
+    "capacity": 108,
+    "items": [
+      {
+        "weight": 4,
+        "value": 37
+      },
+      {
+        "weight": 14,
+        "value": 42
+      },
+      {
+        "weight": 8,
+        "value": 20
+      },
+      {
+        "weight": 26,
+        "value": 52
+      },
+      {
+        "weight": 10,
+        "value": 21
+      },
+      {
+        "weight": 7,
+        "value": 20
+      },
+      {
+        "weight": 12,
+        "value": 46
+      },
+      {
+        "weight": 17,
+        "value": 1
+      },
+      {
+        "weight": 27,
+        "value": 50
+      },
+      {
+        "weight": 2,
+        "value": 17
+      },
+      {
+        "weight": 10,
+        "value": 17
+      },
+      {
+        "weight": 9,
+        "value": 23
+      },
+      {
+        "weight": 30,
+        "value": 8
+      },
+      {
+        "weight": 36,
+        "value": 24
+      },
+      {
+        "weight": 5,
+        "value": 53
+      },
+      {
+        "weight": 38,
+        "value": 17
+      }
+    ]
+  },
+  {
+    "id": "holdout-035",
+    "capacity": 188,
+    "items": [
+      {
+        "weight": 23,
+        "value": 45
+      },
+      {
+        "weight": 18,
+        "value": 17
+      },
+      {
+        "weight": 37,
+        "value": 24
+      },
+      {
+        "weight": 35,
+        "value": 29
+      },
+      {
+        "weight": 5,
+        "value": 47
+      },
+      {
+        "weight": 11,
+        "value": 41
+      },
+      {
+        "weight": 5,
+        "value": 8
+      },
+      {
+        "weight": 24,
+        "value": 59
+      },
+      {
+        "weight": 36,
+        "value": 2
+      },
+      {
+        "weight": 5,
+        "value": 31
+      },
+      {
+        "weight": 4,
+        "value": 39
+      },
+      {
+        "weight": 20,
+        "value": 59
+      },
+      {
+        "weight": 32,
+        "value": 50
+      },
+      {
+        "weight": 1,
+        "value": 42
+      },
+      {
+        "weight": 11,
+        "value": 20
+      },
+      {
+        "weight": 7,
+        "value": 21
+      },
+      {
+        "weight": 30,
+        "value": 53
+      },
+      {
+        "weight": 12,
+        "value": 3
+      },
+      {
+        "weight": 40,
+        "value": 24
+      },
+      {
+        "weight": 13,
+        "value": 56
+      },
+      {
+        "weight": 8,
+        "value": 6
+      }
+    ]
+  },
+  {
+    "id": "holdout-036",
+    "capacity": 112,
+    "items": [
+      {
+        "weight": 2,
+        "value": 43
+      },
+      {
+        "weight": 18,
+        "value": 5
+      },
+      {
+        "weight": 10,
+        "value": 48
+      },
+      {
+        "weight": 5,
+        "value": 49
+      },
+      {
+        "weight": 13,
+        "value": 51
+      },
+      {
+        "weight": 34,
+        "value": 12
+      },
+      {
+        "weight": 38,
+        "value": 14
+      },
+      {
+        "weight": 17,
+        "value": 5
+      },
+      {
+        "weight": 26,
+        "value": 47
+      },
+      {
+        "weight": 37,
+        "value": 49
+      },
+      {
+        "weight": 26,
+        "value": 44
+      },
+      {
+        "weight": 15,
+        "value": 1
+      },
+      {
+        "weight": 29,
+        "value": 39
+      },
+      {
+        "weight": 33,
+        "value": 30
+      }
+    ]
+  },
+  {
+    "id": "holdout-037",
+    "capacity": 164,
+    "items": [
+      {
+        "weight": 5,
+        "value": 9
+      },
+      {
+        "weight": 4,
+        "value": 11
+      },
+      {
+        "weight": 19,
+        "value": 42
+      },
+      {
+        "weight": 38,
+        "value": 31
+      },
+      {
+        "weight": 35,
+        "value": 51
+      },
+      {
+        "weight": 30,
+        "value": 51
+      },
+      {
+        "weight": 19,
+        "value": 18
+      },
+      {
+        "weight": 21,
+        "value": 32
+      },
+      {
+        "weight": 10,
+        "value": 45
+      },
+      {
+        "weight": 27,
+        "value": 30
+      },
+      {
+        "weight": 37,
+        "value": 10
+      },
+      {
+        "weight": 39,
+        "value": 25
+      },
+      {
+        "weight": 1,
+        "value": 59
+      },
+      {
+        "weight": 15,
+        "value": 34
+      },
+      {
+        "weight": 34,
+        "value": 59
+      }
+    ]
+  },
+  {
+    "id": "holdout-038",
+    "capacity": 210,
+    "items": [
+      {
+        "weight": 36,
+        "value": 56
+      },
+      {
+        "weight": 32,
+        "value": 1
+      },
+      {
+        "weight": 37,
+        "value": 56
+      },
+      {
+        "weight": 6,
+        "value": 49
+      },
+      {
+        "weight": 34,
+        "value": 49
+      },
+      {
+        "weight": 12,
+        "value": 14
+      },
+      {
+        "weight": 5,
+        "value": 33
+      },
+      {
+        "weight": 15,
+        "value": 30
+      },
+      {
+        "weight": 3,
+        "value": 39
+      },
+      {
+        "weight": 14,
+        "value": 17
+      },
+      {
+        "weight": 29,
+        "value": 7
+      },
+      {
+        "weight": 32,
+        "value": 37
+      },
+      {
+        "weight": 21,
+        "value": 34
+      },
+      {
+        "weight": 20,
+        "value": 41
+      },
+      {
+        "weight": 34,
+        "value": 57
+      },
+      {
+        "weight": 36,
+        "value": 47
+      },
+      {
+        "weight": 18,
+        "value": 10
+      },
+      {
+        "weight": 10,
+        "value": 60
+      },
+      {
+        "weight": 39,
+        "value": 29
+      }
+    ]
+  },
+  {
+    "id": "holdout-039",
+    "capacity": 84,
+    "items": [
+      {
+        "weight": 13,
+        "value": 43
+      },
+      {
+        "weight": 4,
+        "value": 50
+      },
+      {
+        "weight": 14,
+        "value": 56
+      },
+      {
+        "weight": 36,
+        "value": 24
+      },
+      {
+        "weight": 3,
+        "value": 29
+      },
+      {
+        "weight": 38,
+        "value": 33
+      },
+      {
+        "weight": 36,
+        "value": 41
+      },
+      {
+        "weight": 36,
+        "value": 2
+      },
+      {
+        "weight": 6,
+        "value": 47
+      },
+      {
+        "weight": 26,
+        "value": 6
+      },
+      {
+        "weight": 27,
+        "value": 17
+      },
+      {
+        "weight": 12,
+        "value": 38
+      }
+    ]
+  }
+]

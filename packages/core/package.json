@@ -1,0 +1,19 @@
+{
+  "name": "@auto/core",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Mission contract, evaluator execution, gates, integrity hashing, archive, and the experiment loop.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.0",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,7 @@
+runs/
+__pycache__/
+node_modules/
+.DS_Store
+
+# Agent tooling writes session state into the directory it runs in.
+.omc/

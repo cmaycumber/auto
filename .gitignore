@@ -1,0 +1,21 @@
+node_modules/
+dist/
+*.log
+.env
+.env.local
+.DS_Store
+__pycache__/
+
+# Agent tooling drops session state into whatever directory it runs in, which for a
+# driver turn is the mission dir. Harmless — it lands outside both the protected and
+# mutable trees — but it is not ours to commit.
+.omc/
+
+# Per-run scratch. The archive JSONL is the committed source of truth;
+# snapshots and raw driver transcripts are not.
+**/runs/*/snapshots/
+**/runs/*/transcripts/
+**/runs/*/workdir/
+
+# Internal competitive/landscape notes — stays local, never published.
+docs/landscape.md

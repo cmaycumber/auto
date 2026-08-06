@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "slug": "knapsack-value-ratio",
+  "title": "Knapsack value ratio",
+  "domain": "combinatorial optimisation (starter mission)",
+  "metric": {
+    "name": "mean_score",
+    "description": "Mean fraction of the LP-relaxation bound achieved across 40 held-out knapsack instances. Ranges 0–1; the naive baseline scores around 0.5."
+  },
+  "evaluator": {
+    "command": "python3 harness/evaluate.py",
+    "format": "json",
+    "timeoutSeconds": 300,
+    "keepPolicy": "score_improvement",
+    "higherIsBetter": true
+  },
+  "gates": [
+    {
+      "metric": "feasible_fraction",
+      "op": "gte",
+      "value": 1,
+      "reason": "Every answer must respect the capacity limit. A solver that overfills scores well on value and is useless."
+    },
+    {
+      "metric": "solver_errors",
+      "op": "lte",
+      "value": 0,
+      "reason": "A solution that throws on any instance is not a solution."
+    }
+  ],
+  "holdout": {
+    "description": "40 instances in harness/holdout/, generated from a different seed than the 40 training instances. The solution may read harness/train/ and never harness/holdout/.",
+    "enforcedBy": "path_isolation",
+    "hiddenPaths": [
+      "harness/holdout"
+    ]
+  },
+  "protectedPaths": [
+    "harness",
+    "auto.json",
+    "mission.md"
+  ],
+  "mutablePaths": [
+    "solution"
+  ],
+  "budget": {
+    "maxIterations": 30,
+    "maxRuntimeSeconds": 3600,
+    "iterationTimeoutSeconds": 600
+  },
+  "driver": {
+    "provider": "claude"
+  },
+  "nullControl": {
+    "command": "python3 harness/null_control.py",
+    "everyNIterations": 10,
+    "alarmWithinFraction": 0.1
+  }
+}
