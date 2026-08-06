@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "slug": "search-strategy",
+  "title": "auto's own parent-selection strategy",
+  "domain": "combinatorial search / the loop's own internals",
+  "metric": {
+    "name": "mean_best",
+    "description": "Mean best NK fitness found within a fixed 80-evaluation budget, averaged over 40 held-out landscapes. Range 0-1. Random selection scores ~0.630; auto's current strategy ~0.690."
+  },
+  "evaluator": {
+    "command": "python3 harness/evaluate.py",
+    "format": "json",
+    "timeoutSeconds": 300,
+    "keepPolicy": "score_improvement",
+    "higherIsBetter": true
+  },
+  "nullControl": {
+    "command": "python3 harness/null_control.py",
+    "everyNIterations": 5,
+    "alarmWithinFraction": 0.1
+  },
+  "gates": [
+    {
+      "metric": "invalid_selections",
+      "op": "lte",
+      "value": 0,
+      "reason": "The strategy must always return a valid archive index. A strategy that sometimes returns garbage is not a strategy."
+    },
+    {
+      "metric": "strategy_errors",
+      "op": "lte",
+      "value": 0,
+      "reason": "A strategy that raises on any landscape is not usable in the real loop."
+    },
+    {
+      "metric": "generalisation_gap",
+      "op": "lte",
+      "value": 0.05,
+      "reason": "Train minus holdout. A strategy that beats train by more than 5 points has been fitted to the training landscapes rather than to the problem (SpecBench's delta). Pre-registered before the run."
+    }
+  ],
+  "holdout": {
+    "description": "40 NK landscapes generated from seeds 5000-5039, held in harness/holdout_seeds.json. The solution develops against seeds 1000-1039 in harness/train_seeds.json and is scored only on the holdout draw.",
+    "enforcedBy": "path_isolation",
+    "hiddenPaths": ["harness/holdout_seeds.json"]
+  },
+  "protectedPaths": ["harness", "auto.json", "mission.md"],
+  "mutablePaths": ["solution"],
+  "budget": {
+    "maxIterations": 30,
+    "maxRuntimeSeconds": 7200,
+    "iterationTimeoutSeconds": 900
+  },
+  "driver": {
+    "provider": "claude"
+  }
+}
