@@ -37,6 +37,7 @@ import { createDriver } from "./drivers/index.ts"
 import type { AgentDriver } from "./drivers/types.ts"
 import { runEvaluator } from "./evaluator.ts"
 import { checkNullControl, type Decision, decide, type NullComparisonContext } from "./gates.ts"
+import { analyseGapTrend, type GapTrend } from "./generalisation.ts"
 import { buildManifest, verifyManifest } from "./integrity.ts"
 import { appendIteration, appendNote, appendSummary, writeHeader } from "./log.ts"
 import { type LoadedMission, newRunId, readMemory, runPaths } from "./mission.ts"
@@ -86,6 +87,8 @@ export interface RunLoopResult {
   entries: ArchiveEntry[]
   nullControlBreached: boolean
   decisionLogPath: string
+  /** Present when the mission declares a generalisation-gap metric. */
+  gapTrend?: GapTrend
 }
 
 export async function runLoop(options: RunLoopOptions): Promise<RunLoopResult> {
@@ -146,6 +149,10 @@ export async function runLoop(options: RunLoopOptions): Promise<RunLoopResult> {
 
   const finish = async (reason: StopReason): Promise<RunLoopResult> => {
     const stats = summarise(entries, mission.evaluator.higherIsBetter)
+    const gapTrend = mission.generalisationGapMetric
+      ? analyseGapTrend(entries, mission.generalisationGapMetric, mission.evaluator.higherIsBetter)
+      : undefined
+
     await appendSummary(paths.decisionLog, {
       metricName: mission.metric.name,
       iterations: stats.total,
@@ -154,7 +161,11 @@ export async function runLoop(options: RunLoopOptions): Promise<RunLoopResult> {
       stopReason: STOP_REASON_TEXT[reason],
       elapsedSeconds: (Date.now() - startedAt.getTime()) / 1000,
       nullControlBreached,
+      gapTrend,
     })
+
+    if (gapTrend?.suspicious) emit({ type: "warning", message: gapTrend.message })
+
     emit({ type: "run_finished", reason, stats })
     return {
       runId,
@@ -163,6 +174,7 @@ export async function runLoop(options: RunLoopOptions): Promise<RunLoopResult> {
       entries,
       nullControlBreached,
       decisionLogPath: paths.decisionLog,
+      ...(gapTrend ? { gapTrend } : {}),
     }
   }
 

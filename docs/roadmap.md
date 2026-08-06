@@ -111,13 +111,18 @@ Honest list of things the current implementation does not do:
   case `maxRuntime + iterationTimeout + evaluatorTimeout`. Deliberate (killing an agent
   mid-edit leaves the tree in a state nothing describes), but it means "stop after 8
   hours" can mean 8h20m. SIGINT aborts in-flight work if you need it sooner.
-- **Statistical gates are per-iteration only.** There is no equivalent of
-  the DSR / PBO / walk-forward corrections used in quantitative finance — no correction for the fact that 200 iterations
-  of hill-climbing on one holdout is 200 comparisons against the same data. This is the
-  most important missing safeguard: with enough iterations the loop *will* overfit the
-  holdout, and nothing currently detects it. A second, never-touched validation split
-  scored only on the final champion is the cheapest fix.
+- **No multiplicity correction.** Partially addressed: `generalisationGapMetric` now tracks
+  the SpecBench-style Δ across a run and flags a gap that widens while the score climbs
+  (`generalisation.ts`). That catches overfitting *when the mission reports a gap metric*.
+  Still missing is the statistical half — the DSR / PBO / walk-forward family used in
+  quantitative finance, which corrects for the fact that 200 iterations of hill-climbing
+  against one holdout is 200 comparisons against the same data. Also missing: an attempt
+  registry with a binomial note (`P(≥passes | attempts, p₀)`) so search multiplicity is
+  accounted in the open.
+- **No LLM judge.** EvilGenie found LLM judges outperformed held-out tests at *detecting*
+  reward hacking. `auto` permits a judge inside an evaluator command but ships none, and
+  has no notion of a judge as a distinct, separately-validated component.
 
-That last one deserves emphasis. Everything `auto` currently enforces protects against
-the agent gaming the measurement. Nothing yet protects against the *loop itself* gaming
-it through sheer repetition.
+The multiplicity item deserves emphasis. `auto` now has one signal against the *loop*
+gaming its own measurement (the gap trend) and none of the statistical machinery. Every
+other safeguard protects against the *agent*.

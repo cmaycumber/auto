@@ -72,6 +72,11 @@ export {
   type Verdict,
 } from "./gates.ts"
 export {
+  analyseGapTrend,
+  type GapReading,
+  type GapTrend,
+} from "./generalisation.ts"
+export {
   auditPathDeclarations,
   buildManifest,
   findOutOfBoundsEdits,

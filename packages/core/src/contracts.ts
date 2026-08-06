@@ -138,6 +138,21 @@ export interface AutoMission {
   protectedPaths: string[]
   /** Everything the agent may edit. Anything outside this set is rejected. */
   mutablePaths: string[]
+  /**
+   * Name of a metric the evaluator reports representing the **generalisation gap** —
+   * the score on data the loop optimised against, minus the score on data it did not.
+   *
+   * SpecBench (arXiv:2605.21384) formalises this as Δ = s_val − s_test and finds it is
+   * the most effective available signal for reward hacking: frontier agents saturate the
+   * visible tests at ~95% while held-out performance diverges, with the gap widening
+   * ~27 points per 10× increase in code size.
+   *
+   * Declaring it here lets `auto` track the gap's *trend* across a run, which is the part
+   * a single gate cannot catch. A gap that is small at baseline and large at the champion
+   * means the loop overfitted — the failure mode that no per-iteration check detects,
+   * because each individual iteration looked fine.
+   */
+  generalisationGapMetric?: string
   budget: Budget
   driver: DriverConfig
 }
@@ -352,6 +367,13 @@ export function parseMission(raw: unknown): AutoMission {
 
   const nullControl = parseNullControl(obj.nullControl)
   if (nullControl) mission.nullControl = nullControl
+
+  if (obj.generalisationGapMetric !== undefined) {
+    mission.generalisationGapMetric = asString(
+      obj.generalisationGapMetric,
+      "generalisationGapMetric",
+    )
+  }
 
   return mission
 }

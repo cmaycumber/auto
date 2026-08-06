@@ -118,6 +118,8 @@ export interface SummaryOptions {
   stopReason: string
   elapsedSeconds: number
   nullControlBreached: boolean
+  /** Present when the mission declares a generalisation-gap metric. */
+  gapTrend?: { suspicious: boolean; message: string } | undefined
 }
 
 /**
@@ -140,7 +142,16 @@ export async function appendSummary(logPath: string, options: SummaryOptions): P
     "",
   ]
 
+  if (options.gapTrend) {
+    lines.push(`- **Generalisation gap:** ${options.gapTrend.message}`, "")
+  }
+
   const caveats: string[] = []
+  if (options.gapTrend?.suspicious) {
+    // Listed first: a widening gap invalidates the headline number more directly than
+    // anything else here, and it is the one an operator is least likely to look for.
+    caveats.push(options.gapTrend.message)
+  }
   if (options.nullControlBreached) {
     caveats.push(
       "The null control scored close to the champion. Until that is explained, treat " +

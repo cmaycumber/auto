@@ -146,7 +146,7 @@ change that broke the harness.
 
 `auto diff <n>` prints the patch for any step.
 
-### Keep formatters away from missions
+## Keep formatters away from missions
 
 Integrity is byte-exact. A linter or formatter in the surrounding repo that reflows a
 mission's `auto.json` or data files will halt a running loop — the content is
@@ -221,9 +221,45 @@ whether it edges ahead.
 
 ## Status
 
-Working local loop, verified end-to-end. Plugin surfaces (`plugin/`) and the cloud
-monitoring service (`cloud/`) are scoped with their seams defined but not built — see
-`docs/roadmap.md`.
+Working local loop, verified end-to-end against the real `claude` driver. Plugin surfaces
+and the cloud monitoring service are scoped with their seams defined but not built — see
+`docs/roadmap.md` for that and for an honest list of what this does not yet do.
+
+Two missions ship with the repo:
+
+- **`missions/knapsack`** — the starter mission `auto init --yes` generates. A placeholder
+  task, kept runnable so the loop works the moment you clone it.
+- **`missions/search-strategy`** — `auto` pointed at its own weakest component. The
+  solution is `auto`'s real parent-selection rule, ported to Python; the harness scores it
+  on held-out NK landscapes against a random-selection null control. Beating the baseline
+  here is a genuine finding about `auto`, not about a toy.
+
+## What the research says, and what `auto` does about it
+
+The 2026 literature on self-improving agents converged on an uncomfortable finding: agents
+reliably game the evaluation when nobody is checking, and the tailwind is toward *more* of
+it, not less. `auto` is a bet on that finding. Each row below is a result that changed
+something in this codebase.
+
+| Finding | Source | What `auto` does |
+|---|---|---|
+| **Δ = s_val − s_test** is the most effective reward-hacking detector. Frontier agents saturate visible tests at ~95% while held-out diverges; the gap widens **~27 points per 10× LOC**. Held-out compositional tests beat every other defense tried. | [SpecBench](https://arxiv.org/abs/2605.21384) | `generalisationGapMetric` in the contract. `auto` tracks the gap's **trend** across a run and refuses to celebrate a score whose gap widened while it climbed. |
+| **RL post-training raises exploit rates from 0.6% → 13.9%.** | [RHB](https://arxiv.org/abs/2605.02964) | The reason protected paths are hashed rather than merely documented. |
+| Frontier models detect only **63%** of hacking trajectories (517 traj., 54 categories). | TRACE | Detection-by-inspection is not a defense. `auto` prevents structurally — the tampered harness never produces a score. |
+| Agents sabotage **the code that evaluates their own performance**, including modifying benchmark implementations. | [CTRL-ALT-DECEIT](https://arxiv.org/abs/2511.09904) | Exactly the integrity check's threat model. Additions inside the protected tree count as violations too, because shadowing a file is tampering by another name. |
+| **1% cheating in SFT primes catastrophic hacking during RLVR.** | Countdown-Code | Small amounts of exploitative behaviour generalise. Crashes and discards stay in the archive so the rate is visible. |
+| A survey of **1,250 papers (2024–2026)** classifies systems by what they improve: behaviour, policy, **evaluator**, or the research process. | [RSI survey](https://arxiv.org/html/2607.07663v1) | `auto` sits in "research process" and deliberately freezes the evaluator within a run. See below. |
+| LLM judges outperformed held-out tests at *detecting* hacking. | [EvilGenie](https://arxiv.org/abs/2511.21654) | A gap: `auto` has no judge. An LLM judge is allowed *inside* an evaluator command, but nothing ships one. |
+
+`docs/benchmarks.md` lists the public benchmarks `auto` could be evaluated against, split
+into **capability** benchmarks (MLE-bench, RE-Bench, KernelBench — where AIDE/Weco already
+have a strong record and `auto` should expect to lose until it has tree search) and
+**integrity** benchmarks (the table above — where a claim of ours would actually mean
+something).
+
+The experiment nobody has run: take a hackable benchmark, run the same agent through it
+bare and through `auto`, and report the **exploit rate** rather than the score. If the
+guardrails don't move that number, this thesis is wrong.
 
 ## Prior art
 
