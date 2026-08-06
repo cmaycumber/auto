@@ -68,14 +68,23 @@ export function checkGates(gates: Gate[], result: EvaluatorResult): GateBreach[]
   return breaches
 }
 
-/** True when `candidate` is strictly better than `parent` under the mission's direction. */
+/**
+ * True when `candidate` beats `parent` by more than `minimumEffect` under the mission's
+ * direction.
+ *
+ * `minimumEffect` defaults to 0, which reproduces "any improvement counts" — the naive
+ * rule, and one that quietly accepts noise on any evaluator with sampling variance. A
+ * mission that knows its noise floor should set it.
+ */
 export function isImprovement(
   candidate: number,
   parent: number | undefined,
   higherIsBetter: boolean,
+  minimumEffect = 0,
 ): boolean {
   if (parent === undefined) return true
-  return higherIsBetter ? candidate > parent : candidate < parent
+  const delta = higherIsBetter ? candidate - parent : parent - candidate
+  return delta > minimumEffect
 }
 
 export interface DecideOptions {
@@ -121,7 +130,9 @@ export function decide(options: DecideOptions): Decision {
   }
 
   const direction = mission.evaluator.higherIsBetter ? "higher" : "lower"
-  if (isImprovement(result.score, parentScore, mission.evaluator.higherIsBetter)) {
+  const minimumEffect = mission.evaluator.minimumEffect ?? 0
+
+  if (isImprovement(result.score, parentScore, mission.evaluator.higherIsBetter, minimumEffect)) {
     const versus =
       parentScore === undefined
         ? "no parent — this is the baseline"
@@ -133,10 +144,27 @@ export function decide(options: DecideOptions): Decision {
     }
   }
 
+  // Distinguish "worse" from "better, but not by enough to believe". They read the same
+  // in an archive otherwise, and they mean very different things: the second is a
+  // candidate that may well be real and is simply not yet demonstrated.
+  const parent = parentScore as number
+  const delta = mission.evaluator.higherIsBetter ? result.score - parent : parent - result.score
+
+  if (minimumEffect > 0 && delta > 0) {
+    return {
+      verdict: "discard",
+      rationale:
+        `${mission.metric.name} = ${format(result.score)} beats ${format(parent)} by ` +
+        `${format(delta)}, under the ${format(minimumEffect)} minimum effect — within the ` +
+        "evaluator's noise, so not kept.",
+      breaches: [],
+    }
+  }
+
   return {
     verdict: "discard",
     rationale: `${mission.metric.name} = ${format(result.score)} does not beat champion ${format(
-      parentScore as number,
+      parent,
     )} (${direction} is better).`,
     breaches: [],
   }

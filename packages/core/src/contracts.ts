@@ -47,6 +47,22 @@ export interface EvaluatorContract {
   keepPolicy: KeepPolicy
   /** False for metrics like error rate or latency where lower wins. */
   higherIsBetter: boolean
+  /**
+   * The smallest score improvement worth keeping. A candidate must beat its parent by
+   * more than this, not merely beat it.
+   *
+   * Without it, `score_improvement` accepts *any* improvement — including one smaller
+   * than the evaluator's own noise. That is not hypothetical: the first keep in this
+   * repo's own `search-strategy` mission was +1.8%, and a paired bootstrap on the same
+   * 40 samples put the 95% CI at [-0.001, +0.026] with a sign test of 24W-15L, p=0.20.
+   * The loop called it a win; it was noise.
+   *
+   * Set this to the smallest effect you would actually believe. If you do not know,
+   * measure it: run two reasonable candidates against the evaluator and look at the
+   * spread. A mission whose evaluator reports a standard error can instead gate on that
+   * directly.
+   */
+  minimumEffect?: number
 }
 
 /**
@@ -250,13 +266,21 @@ function parseEvaluator(raw: unknown): EvaluatorContract {
   if (format !== "json") {
     fail("evaluator.format", "must be `json` in v1.")
   }
-  return {
+  const contract: EvaluatorContract = {
     command: asString(obj.command, "evaluator.command"),
     format: "json",
     timeoutSeconds: asPositiveNumber(obj.timeoutSeconds, "evaluator.timeoutSeconds"),
     keepPolicy: asEnum(obj.keepPolicy, "evaluator.keepPolicy", KEEP_POLICIES),
     higherIsBetter: asBoolean(obj.higherIsBetter, "evaluator.higherIsBetter"),
   }
+
+  if (obj.minimumEffect !== undefined) {
+    const minimumEffect = asNumber(obj.minimumEffect, "evaluator.minimumEffect")
+    if (minimumEffect < 0) fail("evaluator.minimumEffect", "must be zero or greater.")
+    contract.minimumEffect = minimumEffect
+  }
+
+  return contract
 }
 
 function parseNullControl(raw: unknown): NullControl | undefined {

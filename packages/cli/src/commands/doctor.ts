@@ -117,6 +117,32 @@ export async function doctorCommand(options: DoctorOptions): Promise<number> {
     warnings += 1
   }
 
+  if (
+    mission.evaluator.keepPolicy === "score_improvement" &&
+    mission.evaluator.minimumEffect === undefined
+  ) {
+    warn(
+      "No `evaluator.minimumEffect`. Any improvement will be kept, however small — " +
+        "including one smaller than the evaluator's own noise.",
+    )
+    info(
+      color.dim(
+        wrap(
+          "This repo's own search-strategy mission hit exactly that: the loop kept a " +
+            "+1.8% candidate whose paired bootstrap CI was [-0.001, +0.026], sign test " +
+            "24W-15L, p=0.20. If you do not know your evaluator's noise floor, measure " +
+            "it — run two reasonable candidates and look at the spread — then set this " +
+            "to the smallest effect you would actually believe.",
+          76,
+          "    ",
+        ),
+      ),
+    )
+    warnings += 1
+  } else if (mission.evaluator.minimumEffect !== undefined) {
+    success(`Minimum effect ${mission.evaluator.minimumEffect} — smaller gains are not kept`)
+  }
+
   // ---- Driver -----------------------------------------------------------
   heading("Driver")
   const driver = createDriver(mission.driver)

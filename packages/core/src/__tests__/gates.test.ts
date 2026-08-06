@@ -115,6 +115,69 @@ describe("decide", () => {
     ).toBe("discard")
   })
 
+  test("rejects an improvement smaller than the minimum effect", () => {
+    // The real failure this was built for: `auto` kept a +1.8% candidate in its own
+    // search-strategy mission that a paired bootstrap put at CI [-0.001, +0.026],
+    // sign test 24W-15L, p=0.20. Any-improvement-counts accepts noise.
+    const strict = mission({
+      evaluator: { ...mission().evaluator, minimumEffect: 0.014 },
+    })
+    const decision = decide({
+      mission: strict,
+      result: { pass: true, score: 0.702461 },
+      parentScore: 0.68995,
+    })
+
+    expect(decision.verdict).toBe("discard")
+    expect(decision.rationale).toContain("minimum effect")
+    expect(decision.rationale).toContain("noise")
+  })
+
+  test("keeps an improvement that clears the minimum effect", () => {
+    const strict = mission({
+      evaluator: { ...mission().evaluator, minimumEffect: 0.014 },
+    })
+    const decision = decide({
+      mission: strict,
+      result: { pass: true, score: 0.75 },
+      parentScore: 0.68995,
+    })
+    expect(decision.verdict).toBe("keep")
+  })
+
+  test("distinguishes `too small to believe` from `actually worse`", () => {
+    // Both are discards, and conflating them in the archive loses real information:
+    // one is a candidate that may be right and is undemonstrated.
+    const strict = mission({ evaluator: { ...mission().evaluator, minimumEffect: 0.1 } })
+
+    const tooSmall = decide({
+      mission: strict,
+      result: { pass: true, score: 0.55 },
+      parentScore: 0.5,
+    })
+    const worse = decide({
+      mission: strict,
+      result: { pass: true, score: 0.4 },
+      parentScore: 0.5,
+    })
+
+    expect(tooSmall.rationale).toContain("minimum effect")
+    expect(worse.rationale).toContain("does not beat")
+    expect(worse.rationale).not.toContain("minimum effect")
+  })
+
+  test("respects minimum effect for lower-is-better missions", () => {
+    const strict = mission({
+      evaluator: { ...mission().evaluator, higherIsBetter: false, minimumEffect: 0.1 },
+    })
+    expect(
+      decide({ mission: strict, result: { pass: true, score: 0.45 }, parentScore: 0.5 }).verdict,
+    ).toBe("discard")
+    expect(
+      decide({ mission: strict, result: { pass: true, score: 0.2 }, parentScore: 0.5 }).verdict,
+    ).toBe("keep")
+  })
+
   test("an equal score is not an improvement", () => {
     const decision = decide({
       mission: mission(),
